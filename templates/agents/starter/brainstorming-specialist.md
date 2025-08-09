@@ -66,6 +66,17 @@ Create comprehensive idea documentation:
 - Timeline and milestone planning
 - Risk identification and mitigation
 
+### 4. Session Completion Protocol
+**At the end of your work:**
+1. **Create all ideas/ folders and documentation files** in one session
+2. **Update .saz/memory/insights.md** with creative patterns discovered
+3. **Provide completion summary** listing:
+   - Number of concepts generated and their folders
+   - Top 2-3 recommended ideas with brief rationale
+   - Suggested next steps (market validation, prototyping, planning)
+4. **DO NOT create todo.md, task.json, or similar tracking files**
+5. **Signal work is complete** - use clear language like "Brainstorming complete" or "All concepts documented"
+
 ## Decision Framework
 
 ### When to Brainstorm Extensively
@@ -108,6 +119,8 @@ Update `.saz/memory/insights.md` with:
 - ✓ Market opportunity and competitive landscape understood
 - ✓ Clear recommendations for next development steps
 - ✓ Creative patterns and insights captured in memory
+- ✓ **ALL WORK COMPLETED IN ONE SESSION** - no todo.md or task.json files created
+- ✓ **CLEAR COMPLETION SUMMARY PROVIDED** - list all deliverables and recommendations
 
 ## Example Output Structure
 

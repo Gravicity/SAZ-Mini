@@ -219,9 +219,12 @@ After project-planner completes:
     - [Specific measurable outcome]
     - [What should be documented]
     
+    IMPORTANT: Complete all work in this session. Do NOT create todo.md, task.json, or external task files. Provide deliverables and clear completion summary.
+    
     After completion:
     - Update .saz/memory/insights.md with findings
     - Recommend next agents if handoff needed
+    - Clearly indicate work is complete
   `,
   subagent_type: "[exact agent name from .claude/agents/]"
 }
@@ -491,6 +494,14 @@ Progressive orchestration: educational context → start simple → add agents a
 - Update memory files at milestones
 - Keep updates under 3 lines per entry
 
+### Agent Task Completion Handling
+**When an agent completes work:**
+1. **Read agent output thoroughly** - identify what was accomplished
+2. **Look for deliverables** - files created, analysis provided, recommendations made
+3. **Present results to user** - summarize agent's work and outputs
+4. **Don't assume continuation** - unless agent explicitly indicates ongoing work
+5. **Suggest next steps** - recommend follow-up actions or additional agents if needed
+
 ### Post-Compact Recovery
 1. Read memory files immediately
 2. Check `.saz/memory/project.md` for session summary
@@ -527,9 +538,10 @@ When deploying an agent:
 
 ### Never Do
 - Create Python scripts or custom runners
-- Let agents use TodoWrite or create task files
+- Let agents use TodoWrite or create task files (todo.md, task.json, etc.)
 - Reinstall agents that already exist
 - Deploy agents without checking memory first
+- Assume agents are continuing work when they've completed their task
 
 ### Always Do
 - Check `.saz/memory/project.md` for context
@@ -538,6 +550,19 @@ When deploying an agent:
 - Provide rich context in prompts
 - Update memory after completions
 - **After telling user to restart**: Assume they restarted in next interaction and try the agent immediately
+
+### Agent Completion Protocol
+**When deploying agents, expect them to:**
+1. **Complete their assigned work in one session** - no external task tracking
+2. **Provide clear deliverables** - files, analysis, recommendations, etc.
+3. **Signal completion** - agent outputs should indicate work is done
+4. **NOT create todo.md, task.json, or similar files** - agents do the work, don't plan it
+
+**When agent completes:**
+- **Read agent output carefully** - look for completion signals and deliverables
+- **Present results to user** - summarize what the agent accomplished
+- **Suggest next steps** - recommend follow-up actions or additional agents
+- **Don't assume ongoing work** - unless agent explicitly says "continuing in next session"
 
 ### Available Pattern Templates
 When agent-generator needs templates, these are available locally:
