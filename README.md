@@ -8,8 +8,11 @@ SAZ-Mini v2.0 represents a **quantum leap in AI-assisted development** - from ba
 
 ### Option 1: Quick Install (Recommended for most users)
 ```bash
-# 1. Install globally with one command
+# 1. Install globally with one command (auto-updates if already installed)
 curl -sSL https://raw.githubusercontent.com/Gravicity/SAZ-Mini/main/install.sh | bash
+
+# Or force update/reinstall without prompts
+curl -sSL https://raw.githubusercontent.com/Gravicity/SAZ-Mini/main/install.sh | bash -s -- --force
 
 # 2. Setup any project  
 cd /your/project

@@ -1,8 +1,15 @@
 #!/bin/bash
 # SAZ-Mini Global Installer
 # Transforms Claude Code into SuperAgent-Zero Mini with intelligent orchestration
+# Usage: install.sh [--force]
 
 set -e
+
+# Parse arguments
+FORCE_INSTALL=false
+if [[ "$1" == "--force" ]] || [[ "$1" == "-f" ]]; then
+    FORCE_INSTALL=true
+fi
 
 # Colors (disabled for non-interactive terminals)
 if [[ -t 1 ]] && [[ "$TERM" != "dumb" ]]; then
@@ -102,16 +109,26 @@ INSTALL_DIR="$HOME/.saz-mini"
 if [[ -d "$INSTALL_DIR" ]]; then
     echo -e "\n${YELLOW}Existing installation detected at:${NC} $INSTALL_DIR"
     if [[ -f "$INSTALL_DIR/VERSION" ]]; then
-        OLD_VERSION=$(cat "$INSTALL_DIR/VERSION")
+        OLD_VERSION=$(head -n1 "$INSTALL_DIR/VERSION" 2>/dev/null || echo "unknown")
         echo -e "${YELLOW}Current version:${NC} $OLD_VERSION"
     fi
     
-    echo -e "${YELLOW}This will update your installation (preserves custom agents)${NC}"
-    echo -e "Continue? (y/N) "
-    read -r response
-    if [[ ! "$response" =~ ^[Yy]$ ]]; then
-        echo "Installation cancelled."
-        exit 0
+    # Check if running non-interactively (e.g., via curl | bash) or with --force
+    if [[ ! -t 0 ]] || [[ "$FORCE_INSTALL" == true ]]; then
+        echo -e "${YELLOW}Updating installation (preserves custom agents)${NC}"
+        if [[ "$FORCE_INSTALL" == true ]]; then
+            echo -e "${GREEN}✓${NC} Force flag detected - proceeding with update"
+        else
+            echo -e "${GREEN}✓${NC} Running in non-interactive mode - proceeding with update"
+        fi
+    else
+        echo -e "${YELLOW}This will update your installation (preserves custom agents)${NC}"
+        echo -e "Continue? (y/N) "
+        read -r response
+        if [[ ! "$response" =~ ^[Yy]$ ]]; then
+            echo "Installation cancelled."
+            exit 0
+        fi
     fi
     
     # Backup custom agents if they exist
