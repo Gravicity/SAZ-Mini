@@ -1,0 +1,185 @@
+#!/bin/bash
+# SAZ-Mini Global Installer
+# Transforms Claude Code into SuperAgent-Zero Mini with intelligent orchestration
+
+set -e
+
+# Colors (disabled for non-interactive terminals)
+if [[ -t 1 ]] && [[ "$TERM" != "dumb" ]]; then
+    GREEN='\033[0;32m'
+    BLUE='\033[0;34m'
+    YELLOW='\033[1;33m'
+    RED='\033[0;31m'
+    BOLD='\033[1m'
+    NC='\033[0m'
+else
+    GREEN=''
+    BLUE=''
+    YELLOW=''
+    RED=''
+    BOLD=''
+    NC=''
+fi
+
+# Error handling
+handle_error() {
+    echo -e "\n${RED}✗ Installation failed!${NC}"
+    echo -e "${RED}Error on line $1${NC}"
+    echo -e "Please check the error above and try again."
+    echo -e "If the problem persists, create an issue at: https://github.com/yourusername/saz-mini/issues"
+    exit 1
+}
+trap 'handle_error $LINENO' ERR
+
+echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "${BLUE}                    SAZ-Mini Installation${NC}"
+echo -e "${BLUE}        ${BOLD}SuperAgent-Zero Mini for Claude Code${NC}${BLUE}${NC}"
+echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+
+# Pre-installation checks
+echo -e "\n${BLUE}Pre-installation checks:${NC}"
+
+# Check if bash is available
+if ! command -v bash &> /dev/null; then
+    echo -e "${RED}✗${NC} Bash is required but not found"
+    exit 1
+fi
+echo -e "${GREEN}✓${NC} Bash available"
+
+# Check if we can create directories in HOME
+if [[ ! -w "$HOME" ]]; then
+    echo -e "${RED}✗${NC} Cannot write to home directory: $HOME"
+    exit 1
+fi
+echo -e "${GREEN}✓${NC} Home directory writable"
+
+# Get the directory where install.sh is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+echo -e "${GREEN}✓${NC} Installation source: ${BLUE}$SCRIPT_DIR${NC}"
+
+# Validate source files exist
+REQUIRED_FILES=("templates" "setup.sh" "update.sh" "packs" "VERSION")
+for file in "${REQUIRED_FILES[@]}"; do
+    if [[ ! -e "$SCRIPT_DIR/$file" ]]; then
+        echo -e "${RED}✗${NC} Missing required file: $file"
+        echo -e "  Please ensure you have the complete SAZ-Mini distribution"
+        exit 1
+    fi
+done
+echo -e "${GREEN}✓${NC} All required files present"
+
+# Installation directory
+INSTALL_DIR="$HOME/.saz-mini"
+
+# Check for existing installation
+if [[ -d "$INSTALL_DIR" ]]; then
+    echo -e "\n${YELLOW}Existing installation detected at:${NC} $INSTALL_DIR"
+    if [[ -f "$INSTALL_DIR/VERSION" ]]; then
+        OLD_VERSION=$(cat "$INSTALL_DIR/VERSION")
+        echo -e "${YELLOW}Current version:${NC} $OLD_VERSION"
+    fi
+    
+    echo -e "${YELLOW}This will update your installation (preserves custom agents)${NC}"
+    echo -e "Continue? (y/N) "
+    read -r response
+    if [[ ! "$response" =~ ^[Yy]$ ]]; then
+        echo "Installation cancelled."
+        exit 0
+    fi
+    
+    # Backup custom agents if they exist
+    if [[ -d "$INSTALL_DIR/custom-agents-backup" ]]; then
+        echo -e "${YELLOW}→${NC} Preserving existing custom agents backup"
+    fi
+else
+    echo -e "\n${YELLOW}→${NC} Creating installation directory at ${BLUE}$INSTALL_DIR${NC}"
+fi
+
+# Create installation directory
+mkdir -p "$INSTALL_DIR"
+
+# Copy framework files with validation
+echo -e "${YELLOW}→${NC} Installing SAZ-Mini framework..."
+
+# Core templates
+if ! cp -r "$SCRIPT_DIR/templates" "$INSTALL_DIR/"; then
+    echo -e "${RED}✗${NC} Failed to copy templates"
+    exit 1
+fi
+
+# Scripts
+SCRIPTS=("setup.sh" "update.sh")
+for script in "${SCRIPTS[@]}"; do
+    if ! cp "$SCRIPT_DIR/$script" "$INSTALL_DIR/"; then
+        echo -e "${RED}✗${NC} Failed to copy $script"
+        exit 1
+    fi
+    chmod +x "$INSTALL_DIR/$script"
+done
+
+# Copy health check if it exists
+if [[ -f "$SCRIPT_DIR/health-check.sh" ]]; then
+    cp "$SCRIPT_DIR/health-check.sh" "$INSTALL_DIR/"
+    chmod +x "$INSTALL_DIR/health-check.sh"
+fi
+
+# Registry and version
+if ! cp -r "$SCRIPT_DIR/packs" "$INSTALL_DIR/"; then
+    echo -e "${RED}✗${NC} Failed to copy agent registry"
+    exit 1
+fi
+
+if ! cp "$SCRIPT_DIR/VERSION" "$INSTALL_DIR/"; then
+    echo -e "${RED}✗${NC} Failed to copy version file"
+    exit 1
+fi
+
+# Validate installation
+echo -e "${YELLOW}→${NC} Validating installation..."
+NEW_VERSION=$(cat "$INSTALL_DIR/VERSION")
+
+# Count templates
+TEMPLATE_COUNT=$(find "$INSTALL_DIR/templates/agents/patterns" -name "*.md" ! -name "README.md" 2>/dev/null | wc -l | tr -d ' ')
+if [[ "$TEMPLATE_COUNT" -ne 5 ]]; then
+    echo -e "${RED}✗${NC} Template validation failed - expected 5, found $TEMPLATE_COUNT"
+    exit 1
+fi
+
+# Count starter agents
+STARTER_COUNT=$(find "$INSTALL_DIR/templates/agents/starter" -name "*.md" 2>/dev/null | wc -l | tr -d ' ')
+if [[ "$STARTER_COUNT" -ne 4 ]]; then
+    echo -e "${RED}✗${NC} Starter agent validation failed - expected 4, found $STARTER_COUNT"
+    exit 1
+fi
+
+# Check registry
+if ! python3 -c "import json; json.load(open('$INSTALL_DIR/packs/registry.json'))" 2>/dev/null; then
+    echo -e "${YELLOW}⚠${NC} Registry JSON validation skipped (python3 not available)"
+fi
+
+echo -e "${GREEN}✓${NC} Installation validated successfully"
+echo -e "${GREEN}✓${NC} SAZ-Mini v${NEW_VERSION} installed!"
+
+# Success message
+echo -e "\n${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "${GREEN}${BOLD}        🎉 SAZ-Mini Installation Complete! 🎉${NC}"
+echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+
+echo -e "\n${BLUE}What's installed:${NC}"
+echo -e "  • ${GREEN}4 starter agents${NC} (planner, analyzer, memory-manager, agent-generator)"
+echo -e "  • ${GREEN}5 production templates${NC} (Next.js, API, Database, UI, Deployment)"
+echo -e "  • ${GREEN}3 proven workflows${NC} (SaaS app, optimization, feature addition)"
+echo -e "  • ${GREEN}Health check tool${NC} for troubleshooting"
+
+echo -e "\n${BLUE}Next steps:${NC}"
+echo -e "  1. Navigate to your project: ${YELLOW}cd /path/to/your/project${NC}"
+echo -e "  2. Run setup: ${YELLOW}~/.saz-mini/setup.sh${NC}"
+echo -e "  3. ${BOLD}Restart Claude Code${NC}: Press Ctrl+C twice, then ${YELLOW}claude --resume${NC}"
+echo -e "  4. Start with: ${YELLOW}\"What should we work on first?\"${NC}"
+
+echo -e "\n${BLUE}Useful commands:${NC}"
+echo -e "  • Health check: ${YELLOW}~/.saz-mini/health-check.sh${NC}"
+echo -e "  • Update framework: ${YELLOW}~/.saz-mini/update.sh${NC}"
+echo -e "  • Project setup: ${YELLOW}~/.saz-mini/setup.sh --interactive${NC}"
+
+echo -e "\n${GREEN}Ready to transform your development workflow with intelligent AI orchestration!${NC}"

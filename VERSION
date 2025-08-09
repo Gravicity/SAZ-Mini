@@ -1,0 +1,24 @@
+2.0.0
+
+# SAZ-Mini Version History
+# 2.0.0 - Intelligent Orchestration Evolution
+#       - 🚨 Emergency response system with direct action mode
+#       - 📚 Educational intelligence with adaptive complexity
+#       - 🧠 Contextual intelligence engine for smart agent selection
+#       - ⚡ Agent hot-loading and background preparation
+#       - 🎭 Multi-agent orchestration with parallel coordination
+#       - 5 starter agents (added agent-preloader)
+#       - 10 production templates (doubled from v1.0)
+#       - Batch agent creation with group coordination
+#       - Progressive enhancement workflows
+#       - Adaptive intelligence across all interaction modes
+#
+# 1.0.0 - Initial release with complete feature set
+#       - 4 starter agents with detailed implementations
+#       - 5 production-ready templates 
+#       - 3 proven workflows
+#       - Template-first agent generation
+#       - Research-driven project planning
+#       - Comprehensive error handling
+#       - Health check and validation tools
+#       - Memory sectioning with timestamps

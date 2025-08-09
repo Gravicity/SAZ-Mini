@@ -1,0 +1,24 @@
+# SAZ-Mini Memory System
+# Add this to your project's .gitignore
+
+# Keep memory files in version control for team collaboration
+# .saz/memory/
+
+# Optional: Ignore local memory overrides
+.saz/memory/*.local.md
+
+# Keep generated agents registry 
+# .saz/packs/registry.json
+
+# Ignore temporary context (if added later)
+.saz/context/
+
+# Ignore setup marker
+.saz/.installed
+
+# Keep workflow patterns
+# .saz/workflows/
+
+# Optional: Ignore personal notes
+.saz/notes.md
+.saz/scratch.md
