@@ -221,40 +221,23 @@ your-project/
 ## 🔄 Enhanced Workflows
 
 ### 🚨 Emergency Response Workflow
-```mermaid
-flowchart LR
-    A[Emergency Keywords] --> B[Skip Orchestration]
-    B --> C[Deploy General-Purpose]
-    C --> D[Stream Solutions]
-    D --> E[Fast Memory Updates]
+```
+Emergency Keywords → Skip Orchestration → Deploy General-Purpose → Stream Solutions → Fast Memory Updates
 ```
 
 ### 📚 Educational Learning Path
-```mermaid
-flowchart LR
-    A[Learning Keywords] --> B[Skill Assessment]
-    B --> C[tutorial-guide]
-    C --> D[Progressive Complexity]
-    D --> E[Concept Reinforcement]
+```
+Learning Keywords → Skill Assessment → tutorial-guide → Progressive Complexity → Concept Reinforcement
 ```
 
 ### 🎭 Multi-Agent Orchestration  
-```mermaid
-flowchart LR
-    A[Complex Project] --> B[Context Analysis]
-    B --> C[Agent Team Design]
-    C --> D[Parallel Deployment]
-    D --> E[Shared Memory Coordination]
-    E --> F[Progress Tracking]
+```
+Complex Project → Context Analysis → Agent Team Design → Parallel Deployment → Shared Memory Coordination → Progress Tracking
 ```
 
 ### ⚡ Hot-Loading Enhancement
-```mermaid
-flowchart LR
-    A[Pattern Detection] --> B[Background Agent Creation]
-    B --> C[Hot-Loading]
-    C --> D[Progressive Enhancement]
-    D --> E[Seamless Upgrade]
+```
+Pattern Detection → Background Agent Creation → Hot-Loading → Progressive Enhancement → Seamless Upgrade
 ```
 
 ## 🚀 Advanced Usage Examples
