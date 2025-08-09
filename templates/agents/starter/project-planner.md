@@ -214,7 +214,7 @@ Based on project requirements:
 - **Deployment**: deployment-automation-specialist
 
 ## Next Steps
-1. SuperAgent should generate recommended agents from templates
+1. SuperAgent will assign agent-generator to generate recommended agents from templates
 2. Clone and customize starter template
 3. SuperAgent should deploy agents in priority order
 
