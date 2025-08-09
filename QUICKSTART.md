@@ -6,7 +6,7 @@
 
 ```bash
 # 1. Download and install globally
-git clone [repo] && cd SAZ-Mini
+git clone https://github.com/Gravicity/SAZ-Mini.git && cd SAZ-Mini
 chmod +x install.sh && ./install.sh
 
 # 2. Setup any project  

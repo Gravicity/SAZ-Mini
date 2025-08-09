@@ -8,7 +8,7 @@ SAZ-Mini v2.0 represents a **quantum leap in AI-assisted development** - from ba
 
 ```bash
 # 1. Install globally (one time)
-git clone [this-repo] && cd SAZ-Mini
+git clone https://github.com/Gravicity/SAZ-Mini.git && cd SAZ-Mini
 chmod +x install.sh && ./install.sh
 
 # 2. Setup any project  
