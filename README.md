@@ -342,6 +342,23 @@ cat .saz/packs/registry.json | jq '.agent_groups'
 cat .saz/memory/workflows.md | grep "Multi-Agent"
 ```
 
+### Complete Uninstall & Reinstall
+```bash
+# Remove all global SAZ-Mini files (for clean reinstall or complete removal)
+rm -rf ~/.saz-mini/
+
+# Remove project-specific SAZ-Mini files (optional - preserves your project code)
+rm -f CLAUDE.md CLAUDE.md.backup
+rm -rf .saz/
+rm -rf .claude/agents/starter/
+rm -rf .claude/agents/custom/
+
+# For complete fresh reinstall after removal:
+curl -sSL https://raw.githubusercontent.com/Gravicity/SAZ-Mini/main/install.sh | bash
+cd /your/project && ~/.saz-mini/setup.sh
+claude  # Start fresh session
+```
+
 ## 🐛 Enhanced Troubleshooting
 
 ### Intelligence Diagnostics
