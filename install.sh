@@ -218,7 +218,7 @@ echo -e "  • ${GREEN}Health check tool${NC} for troubleshooting"
 echo -e "\n${BLUE}Next steps:${NC}"
 echo -e "  1. Navigate to your project: ${YELLOW}cd /path/to/your/project${NC}"
 echo -e "  2. Run setup: ${YELLOW}~/.saz-mini/setup.sh${NC}"
-echo -e "  3. ${BOLD}Restart Claude Code${NC}: Press Ctrl+C twice, then ${YELLOW}claude --resume${NC}"
+echo -e "  3. ${BOLD}Activate SuperAgent${NC}: Run ${YELLOW}claude${NC} (or ${YELLOW}/init${NC} if already in Claude Code)"
 echo -e "  4. Start with: ${YELLOW}\"What should we work on first?\"${NC}"
 
 echo -e "\n${BLUE}Useful commands:${NC}"
