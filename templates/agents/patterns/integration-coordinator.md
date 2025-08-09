@@ -1,7 +1,7 @@
 ---
 name: integration-coordinator
-description: Use this agent for complex multi-system integrations. Examples: CRM + ERP + webhooks, API orchestration, data synchronization between services.
-model: claude-3-5-sonnet-20241022
+description: Use this agent when you need to orchestrate complex multi-system integrations with data synchronization and workflow coordination. This agent excels at enterprise system integration, API orchestration, and cross-platform data flows. Examples: <example>Context: User needs to integrate multiple enterprise systems. user: "I need to sync data between Salesforce CRM, SAP ERP, and our custom inventory system with real-time updates" assistant: "I'll use the integration-coordinator to design a multi-system integration with proper data mapping and real-time synchronization" <commentary>User needs complex enterprise integration with multiple systems, perfect fit for integration-coordinator</commentary></example> <example>Context: User wants to orchestrate multiple API workflows. user: "I have 5 different APIs that need to work together in a specific sequence with error handling and retries" assistant: "Let me deploy the integration-coordinator to create an API orchestration system with proper error handling and workflow management" <commentary>User needs sophisticated API workflow orchestration, ideal for integration-coordinator</commentary></example>
+model: claude-4-sonnet
 color: cyan
 tools: Read, Write, MultiEdit, Bash, Grep
 ---

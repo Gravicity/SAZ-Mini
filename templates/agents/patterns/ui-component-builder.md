@@ -1,7 +1,7 @@
 ---
 name: ui-component-builder
-description: Use this agent to create reusable UI components, implement design systems, and build interactive interfaces. Examples: React components, Tailwind styling, accessibility features.
-model: claude-3-5-sonnet-20241022
+description: Use this agent when you need to create reusable UI components, implement design systems, and build accessible interactive interfaces with modern styling. This agent excels at React components, design tokens, and component libraries. Examples: <example>Context: User needs a consistent design system for their application. user: "I need to build a component library for my SaaS app with consistent styling and reusable components" assistant: "I'll use the ui-component-builder to create a comprehensive component library with design tokens and reusable React components" <commentary>User needs systematic UI component development with consistency, perfect fit for ui-component-builder</commentary></example> <example>Context: User wants to improve their existing UI components. user: "My React components are inconsistent and not accessible, need to redesign them properly" assistant: "Let me deploy the ui-component-builder to refactor your components with accessibility features and consistent design patterns" <commentary>User needs UI component improvement with accessibility focus, ideal for ui-component-builder</commentary></example>
+model: claude-4-sonnet
 color: purple
 tools: Read, Write, MultiEdit, WebFetch
 ---

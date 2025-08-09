@@ -1,7 +1,7 @@
 ---
 name: memory-manager
-description: Use this agent for complex knowledge retrieval, pattern analysis across memory files, and orchestrating sophisticated handoffs between agents. Examples: finding past decisions, analyzing patterns, complex multi-agent coordination.
-model: claude-3-5-sonnet-20241022  
+description: Use this agent when you need complex knowledge retrieval, pattern analysis across memory files, and sophisticated handoff coordination between agents. This agent excels at RAG-like search, finding past decisions, and orchestrating multi-agent workflows. Examples: <example>Context: User needs information from previous project sessions. user: "What did we decide about the database architecture in our earlier sessions? I need to reference those decisions" assistant: "I'll use the memory-manager to search through our project memory and retrieve the database architecture decisions and rationale" <commentary>User needs retrieval of past technical decisions from memory files, perfect fit for memory-manager</commentary></example> <example>Context: Complex handoff between multiple agents needed. user: "I need the frontend team (ui-component-builder) to work with what the backend team (api-integration-specialist) built, can you coordinate this?" assistant: "Let me deploy the memory-manager to coordinate the handoff between api-integration-specialist and ui-component-builder with proper context sharing" <commentary>User needs sophisticated multi-agent coordination with context preservation, ideal for memory-manager</commentary></example>
+model: claude-4-sonnet  
 color: purple
 tools: Read, Grep, Edit, MultiEdit
 ---

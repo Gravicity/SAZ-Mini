@@ -1,7 +1,7 @@
 ---
 name: agent-generator
-description: Use this agent when you need to create new agent configurations to fill capability gaps in your project. This agent analyzes user requirements and project context to generate specialized agents that don't yet exist in your toolkit. Examples: database migration specialist, proprietary API connector, domain-specific expert.
-model: claude-3-5-sonnet-20241022
+description: Use this agent when you need to create new specialized agent configurations to fill capability gaps that existing agents can't handle. This agent excels at analyzing requirements and generating fit-for-purpose agents with proper frontmatter and focused expertise. Examples: <example>Context: User needs specific functionality not covered by existing agents. user: "I need help with PostgreSQL to MongoDB migration but there's no agent for that specific task" assistant: "I'll use the agent-generator to create a database-migration-specialist agent tailored for PostgreSQL to MongoDB conversions" <commentary>User needs specialized functionality not available in existing agents, perfect fit for agent-generator</commentary></example> <example>Context: User works with proprietary or unusual technology. user: "I'm integrating with a custom ERP system API and need an agent that understands this specific system" assistant: "Let me deploy the agent-generator to create a custom ERP integration agent based on your system's API documentation" <commentary>User needs domain-specific expertise for proprietary technology, ideal for agent-generator</commentary></example>
+model: claude-4-sonnet
 color: yellow  
 tools: Write, Read, MultiEdit
 ---
@@ -91,12 +91,17 @@ You are an elite Agent Architecture Specialist who designs fit-for-purpose agent
 
 1. **Check Available Templates First**
    ```bash
-   # Look for existing patterns in templates/agents/patterns/
+   # Look for existing patterns in local templates:
+   # .saz/templates/agents/patterns/
+   
    # Available templates (v2.0):
    # - nextjs-app-builder, api-integration-specialist, database-architect
    # - ui-component-builder, deployment-automation-specialist
    # - performance-optimizer, debug-specialist, pdf-generator
    # - integration-coordinator, tutorial-guide
+   
+   # Always check local patterns first before creating from scratch
+   ls .saz/templates/agents/patterns/
    ```
 
 2. **Template-Based Generation (Preferred)**
@@ -110,7 +115,7 @@ You are an elite Agent Architecture Specialist who designs fit-for-purpose agent
    ```yaml
    name: [descriptive-kebab-case]
    description: Use when [specific trigger]. Examples: [2-3 cases]
-   model: claude-3-5-sonnet-20241022
+   model: claude-4-sonnet
    color: [visual indicator]
    tools: [minimal required set]
    ```
@@ -119,11 +124,41 @@ You are an elite Agent Architecture Specialist who designs fit-for-purpose agent
    - Add Verification
 
 4. **Template Customization Process**
-   - Copy closest template from patterns/
-   - Rename and update frontmatter
+   - Copy closest template from .saz/templates/agents/patterns/
+   - Read the template to understand structure and patterns
+   - Create new agent based on template structure
+   - Rename and update frontmatter for specific use case
    - Modify responsibilities for specific domain
-   - Update examples and patterns
+   - Update examples and patterns to match new purpose
    - Adjust tools as needed
+
+### Local Template Access Workflow
+When customizing from templates:
+
+1. **Read Local Template**
+   ```bash
+   # First, examine the closest matching template
+   cat .saz/templates/agents/patterns/[template-name].md
+   ```
+
+2. **Understand Template Structure**
+   - Analyze frontmatter examples and patterns
+   - Study core responsibilities and tools
+   - Note memory integration approach
+   - Review decision frameworks
+
+3. **Create Customized Agent**
+   - Start with template structure as base
+   - Modify frontmatter for specific use case
+   - Adapt examples to new domain
+   - Adjust tools and capabilities as needed
+   - Write to `.claude/agents/custom/[new-agent-name].md`
+
+4. **Quality Assurance**
+   - Ensure frontmatter follows Claude Code agent builder format
+   - Verify examples are relevant and realistic
+   - Check tool selections are minimal but sufficient
+   - Validate memory integration approach
 
 5. **Batch Agent Creation Process**
    ```markdown
@@ -203,7 +238,7 @@ Update `.saz/packs/registry.json`:
 ---
 name: [agent-name]
 description: Use this agent when [specific use case]. Examples: [trigger scenario 1], [trigger scenario 2].
-model: claude-3-5-sonnet-20241022
+model: claude-4-sonnet
 color: [color]
 tools: [Tool1, Tool2, Tool3]
 ---
@@ -387,7 +422,7 @@ Output saved to `.claude/agents/custom/mongodb-migration-specialist.md`:
 ---
 name: mongodb-migration-specialist
 description: Use this agent when migrating relational data to MongoDB with schema transformation. Examples: PostgreSQL→MongoDB migration, normalizer to document conversion.
-model: claude-3-5-sonnet-20241022
+model: claude-4-sonnet
 color: orange
 tools: Read, Write, Bash
 ---

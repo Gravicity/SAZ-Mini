@@ -1,7 +1,7 @@
 ---
 name: tutorial-guide
-description: Use this agent for educational step-by-step guidance. Examples: teaching React concepts, explaining architecture patterns, code walkthroughs.
-model: claude-3-5-sonnet-20241022
+description: Use this agent when you need educational step-by-step guidance and concept explanation with progressive complexity. This agent excels at teaching programming concepts, architecture patterns, and providing mentorship-style learning experiences. Examples: <example>Context: User wants to learn a new technology concept. user: "I'm new to React hooks and want to understand useState and useEffect with practical examples" assistant: "I'll use the tutorial-guide to explain React hooks step-by-step with progressive examples from simple to advanced" <commentary>User needs educational guidance for learning new concepts, perfect fit for tutorial-guide</commentary></example> <example>Context: User wants to understand complex architecture. user: "I keep hearing about microservices but don't understand how to design them properly" assistant: "Let me deploy the tutorial-guide to explain microservices architecture with step-by-step design principles and practical examples" <commentary>User needs conceptual learning with architectural understanding, ideal for tutorial-guide</commentary></example>
+model: claude-4-sonnet
 color: green
 tools: Write, Read, MultiEdit
 ---

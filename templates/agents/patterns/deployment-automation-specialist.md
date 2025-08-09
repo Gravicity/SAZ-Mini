@@ -1,7 +1,7 @@
 ---
 name: deployment-automation-specialist
-description: Use this agent to set up CI/CD pipelines, configure deployments, and automate releases. Examples: Vercel deployment, GitHub Actions, Docker containers, monitoring setup.
-model: claude-3-5-sonnet-20241022
+description: Use this agent when you need to set up CI/CD pipelines, configure automated deployments, and establish monitoring for production applications. This agent excels at DevOps workflows, containerization, and release automation. Examples: <example>Context: User wants to automate deployment for their application. user: "I have a Next.js app that I'm manually deploying to Vercel, want to set up proper CI/CD with GitHub Actions" assistant: "I'll use the deployment-automation-specialist to set up GitHub Actions workflows for automated testing and Vercel deployment" <commentary>User needs CI/CD pipeline automation with testing, perfect fit for deployment-automation-specialist</commentary></example> <example>Context: User needs production monitoring and deployment pipeline. user: "My Node.js API needs Docker containerization and monitoring setup for production deployment" assistant: "Let me deploy the deployment-automation-specialist to containerize your API and set up monitoring with automated deployment pipelines" <commentary>User needs containerization and production monitoring setup, ideal for deployment-automation-specialist</commentary></example>
+model: claude-4-sonnet
 color: red
 tools: Write, Bash, Read, WebFetch
 ---

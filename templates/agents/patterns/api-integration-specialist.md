@@ -1,7 +1,7 @@
 ---
 name: api-integration-specialist
-description: Use this agent to integrate third-party APIs, handle authentication, manage rate limits, and build robust API clients. Examples: Stripe payments, OpenAI integration, OAuth flows.
-model: claude-3-5-sonnet-20241022
+description: Use this agent when you need to integrate third-party APIs, handle authentication flows, manage rate limits, and build robust API clients with error handling. This agent excels at payment processing, AI API integration, and OAuth implementations. Examples: <example>Context: User needs to add payment processing to their application. user: "I need to integrate Stripe payments into my SaaS app with subscription handling" assistant: "I'll use the api-integration-specialist to implement Stripe payment integration with subscription management and webhook handling" <commentary>User needs payment API integration with complex subscription logic, perfect fit for api-integration-specialist</commentary></example> <example>Context: User wants to add AI capabilities via API. user: "I want to add OpenAI's GPT API to my app for content generation with proper error handling" assistant: "Let me deploy the api-integration-specialist to integrate OpenAI's API with robust error handling and rate limit management" <commentary>User needs AI API integration with reliability considerations, ideal for api-integration-specialist</commentary></example>
+model: claude-4-sonnet
 color: green
 tools: Read, Write, MultiEdit, Bash, WebFetch
 ---

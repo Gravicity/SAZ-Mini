@@ -42,12 +42,20 @@
       "created": "bundled",
       "works_well_with": ["agent-generator", "memory-manager"],
       "prerequisites": []
+    },
+    {
+      "name": "brainstorming-specialist",
+      "description": "Creative ideation, concept development, and structured idea documentation with organized folder creation",
+      "type": "starter",
+      "created": "bundled",
+      "works_well_with": ["project-planner", "agent-generator", "memory-manager"],
+      "prerequisites": []
     }
   ],
   "agent_templates": [
     {
       "name": "nextjs-app-builder",
-      "description": "Scaffolds and builds Next.js applications with modern features",
+      "description": "Scaffolds Next.js applications with authentication, SaaS features, and production-ready architecture",
       "type": "template",
       "works_well_with": ["database-architect", "api-integration-specialist", "ui-component-builder"],
       "prerequisites": ["project-planner"],
@@ -55,7 +63,7 @@
     },
     {
       "name": "api-integration-specialist", 
-      "description": "Integrates third-party APIs and builds robust API clients",
+      "description": "Integrates third-party APIs with authentication flows, rate limiting, and robust error handling",
       "type": "template",
       "works_well_with": ["database-architect", "deployment-automation-specialist"],
       "prerequisites": [],
@@ -63,7 +71,7 @@
     },
     {
       "name": "database-architect",
-      "description": "Designs schemas, sets up databases, and optimizes queries",
+      "description": "Designs scalable database schemas, implements migrations, and optimizes query performance",
       "type": "template", 
       "works_well_with": ["api-integration-specialist", "nextjs-app-builder"],
       "prerequisites": [],
@@ -71,7 +79,7 @@
     },
     {
       "name": "ui-component-builder",
-      "description": "Creates reusable UI components and implements design systems",
+      "description": "Creates reusable UI components, design systems, and accessible interfaces with modern styling",
       "type": "template",
       "works_well_with": ["nextjs-app-builder"],
       "prerequisites": ["nextjs-app-builder"],
@@ -79,7 +87,7 @@
     },
     {
       "name": "deployment-automation-specialist",
-      "description": "Sets up CI/CD pipelines and configures deployments",
+      "description": "Sets up CI/CD pipelines, automated deployments, and production monitoring with containerization",
       "type": "template",
       "works_well_with": ["nextjs-app-builder", "database-architect"],
       "prerequisites": ["nextjs-app-builder"],
@@ -87,7 +95,7 @@
     },
     {
       "name": "performance-optimizer",
-      "description": "Optimizes React/Next.js applications for performance",
+      "description": "Optimizes React/Next.js applications for speed, bundle size, and Core Web Vitals with systematic analysis",
       "type": "template",
       "works_well_with": ["nextjs-app-builder", "debug-specialist"],
       "prerequisites": [],
@@ -95,7 +103,7 @@
     },
     {
       "name": "debug-specialist",
-      "description": "Error tracing, bug fixing, and production debugging",
+      "description": "Systematic error tracing, bug fixing, and production debugging with root cause analysis",
       "type": "template",
       "works_well_with": ["performance-optimizer", "integration-coordinator"],
       "prerequisites": [],
@@ -103,7 +111,7 @@
     },
     {
       "name": "pdf-generator", 
-      "description": "PDF document generation and reporting",
+      "description": "PDF document generation, reporting systems, and automated document creation with templates",
       "type": "template",
       "works_well_with": ["api-integration-specialist", "database-architect"],
       "prerequisites": [],
@@ -111,7 +119,7 @@
     },
     {
       "name": "integration-coordinator",
-      "description": "Complex multi-system integrations and API orchestration", 
+      "description": "Complex multi-system integrations, API orchestration, and enterprise system synchronization", 
       "type": "template",
       "works_well_with": ["api-integration-specialist", "debug-specialist"],
       "prerequisites": [],
@@ -119,7 +127,7 @@
     },
     {
       "name": "tutorial-guide",
-      "description": "Educational step-by-step guidance and concept explanation",
+      "description": "Educational step-by-step guidance, concept explanation, and mentorship-style learning experiences",
       "type": "template", 
       "works_well_with": ["nextjs-app-builder", "ui-component-builder"],
       "prerequisites": [],

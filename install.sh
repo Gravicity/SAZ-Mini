@@ -189,10 +189,10 @@ if [[ "$TEMPLATE_COUNT" -ne 10 ]]; then
     exit 1
 fi
 
-# Count starter agents (v2.0 has 5 starter agents)
+# Count starter agents (v2.0 has 6 starter agents)
 STARTER_COUNT=$(find "$INSTALL_DIR/templates/agents/starter" -name "*.md" 2>/dev/null | wc -l | tr -d ' ')
-if [[ "$STARTER_COUNT" -ne 5 ]]; then
-    echo -e "${RED}✗${NC} Starter agent validation failed - expected 5, found $STARTER_COUNT"
+if [[ "$STARTER_COUNT" -ne 6 ]]; then
+    echo -e "${RED}✗${NC} Starter agent validation failed - expected 6, found $STARTER_COUNT"
     exit 1
 fi
 
@@ -210,7 +210,7 @@ echo -e "${GREEN}${BOLD}        🎉 SAZ-Mini Installation Complete! 🎉${NC}"
 echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 
 echo -e "\n${BLUE}What's installed:${NC}"
-echo -e "  • ${GREEN}5 starter agents${NC} (planner, analyzer, memory-manager, agent-generator, agent-preloader)"
+echo -e "  • ${GREEN}6 starter agents${NC} (planner, analyzer, memory-manager, agent-generator, agent-preloader, brainstorming-specialist)"
 echo -e "  • ${GREEN}10 production templates${NC} (Next.js, API, Database, UI, Deployment + 5 new v2.0 templates)"
 echo -e "  • ${GREEN}Enhanced workflows${NC} with emergency response and educational modes"
 echo -e "  • ${GREEN}Health check tool${NC} for troubleshooting"

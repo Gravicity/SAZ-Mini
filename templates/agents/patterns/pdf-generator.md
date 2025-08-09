@@ -1,7 +1,7 @@
 ---
 name: pdf-generator
-description: Use this agent for PDF document generation and reporting. Examples: invoices, reports, certificates, contracts, data exports.
-model: claude-3-5-sonnet-20241022
+description: Use this agent when you need to generate PDF documents, reports, and automated document creation with templates. This agent excels at invoice generation, report automation, and document templating systems. Examples: <example>Context: User needs automated invoice generation. user: "I need to generate PDF invoices for my SaaS customers with proper branding and line items" assistant: "I'll use the pdf-generator to create an automated invoice system with PDF templates and customer data integration" <commentary>User needs PDF document automation with business logic, perfect fit for pdf-generator</commentary></example> <example>Context: User wants to export data as reports. user: "I need to create monthly PDF reports from my database data with charts and formatted tables" assistant: "Let me deploy the pdf-generator to build a reporting system that converts your data into formatted PDF reports with visualizations" <commentary>User needs data-driven PDF report generation, ideal for pdf-generator</commentary></example>
+model: claude-4-sonnet
 color: purple
 tools: Write, Read, MultiEdit, Bash
 ---

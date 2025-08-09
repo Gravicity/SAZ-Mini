@@ -1,7 +1,7 @@
 ---
 name: nextjs-app-builder
-description: Use this agent to scaffold and build Next.js applications with modern features. Examples: creating new SaaS apps, building dashboards, setting up e-commerce sites.
-model: claude-3-5-sonnet-20241022
+description: Use this agent when you need to scaffold and build Next.js applications with modern React patterns, authentication, and production-ready features. This agent excels at creating SaaS applications, dashboards, and e-commerce sites with proper architecture. Examples: <example>Context: User wants to build a new SaaS application. user: "I need to create a SaaS dashboard for project management with user authentication and a modern UI" assistant: "I'll use the nextjs-app-builder to scaffold a Next.js SaaS application with authentication, dashboard layout, and modern UI components" <commentary>User needs a complete SaaS application with modern features, perfect fit for nextjs-app-builder</commentary></example> <example>Context: User wants to upgrade from a simple React app to Next.js. user: "I have a React app but want to move to Next.js for better performance and SEO" assistant: "Let me deploy the nextjs-app-builder to migrate your React app to Next.js with SSR and optimized performance" <commentary>User needs Next.js expertise for migration and optimization, ideal for nextjs-app-builder</commentary></example>
+model: claude-4-sonnet
 color: cyan
 tools: Bash, Write, MultiEdit, WebSearch, WebFetch
 ---

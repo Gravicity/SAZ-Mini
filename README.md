@@ -102,12 +102,13 @@ SuperAgent: 🎭 Multi-agent orchestration required.
 
 ## 🏗️ Enhanced Architecture
 
-### 5 Starter Agents (Expanded from 4)
+### 6 Starter Agents (Expanded from 4)
 - **project-planner**: Enhanced with template research and complexity assessment
 - **project-analyzer**: Context-aware analysis with educational explanations
 - **memory-manager**: RAG search and sophisticated handoff coordination  
 - **agent-generator**: Batch creation and agent group coordination
-- **agent-preloader**: Background preparation and hot-loading management (NEW)
+- **agent-preloader**: Background preparation and hot-loading management
+- **brainstorming-specialist**: Creative ideation and structured idea documentation (NEW)
 
 ### 10 Production Templates (Doubled from 5)
 **Original Templates:**
@@ -175,6 +176,7 @@ SuperAgent: 🎭 Complex project - multi-agent coordination required
 | "URGENT: Site down!" | project-analyzer → slow analysis | 🚨 general-purpose → immediate debugging |
 | "Teach me React" | project-planner → overwhelming roadmap | 📚 tutorial-guide → step-by-step learning |  
 | "Simple todo app" | project-planner → over-engineering | 🧠 Direct specialist → right-sized solution |
+| "I have an app idea..." | project-planner → premature planning | 💡 brainstorming-specialist → structured ideation |
 | "Enterprise integration" | Single agent struggle | 🎭 integration-coordinator → multi-system orchestration |
 | "Performance issues" | Generic project-analyzer | 🧠 performance-optimizer → targeted optimization |
 

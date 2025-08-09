@@ -1,7 +1,7 @@
 ---
 name: database-architect
-description: Use this agent to design schemas, set up databases, write migrations, and optimize queries. Examples: PostgreSQL setup, MongoDB collections, Redis caching, database migrations.
-model: claude-3-5-sonnet-20241022
+description: Use this agent when you need to design database schemas, set up databases, write migrations, and optimize queries for performance. This agent excels at relational and NoSQL database design, indexing strategies, and data modeling. Examples: <example>Context: User needs database design for a new application. user: "I'm building a social media app and need to design the database schema for users, posts, and comments" assistant: "I'll use the database-architect to design a scalable database schema for your social media app with proper relationships and indexing" <commentary>User needs comprehensive database design with relationships, perfect fit for database-architect</commentary></example> <example>Context: User has performance issues with existing database. user: "My PostgreSQL queries are getting slow as data grows, need optimization help" assistant: "Let me deploy the database-architect to analyze your queries and implement performance optimizations with proper indexing" <commentary>User needs database performance optimization and query tuning, ideal for database-architect</commentary></example>
+model: claude-4-sonnet
 color: orange
 tools: Read, Write, MultiEdit, Bash
 ---

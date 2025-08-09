@@ -1,7 +1,7 @@
 ---
-name: project-planner  
-description: Use this agent to plan new projects, features, or major refactors. Examples: greenfield apps, architecture design, roadmap creation.
-model: claude-3-5-sonnet-20241022
+name: project-planner
+description: Use this agent when you need comprehensive planning for new projects, features, or major refactors with clear roadmaps and technical decisions. This agent excels at transforming requirements into actionable implementation plans with phases and milestones. Examples: <example>Context: User wants to build a new application from scratch. user: "I want to build a SaaS dashboard for project management but need a complete implementation plan" assistant: "I'll use the project-planner to create a comprehensive roadmap for your project management SaaS with architecture decisions and development phases" <commentary>User needs structured planning for a complex new project, perfect fit for project-planner</commentary></example> <example>Context: User has a working app but wants to add major new features. user: "I have a React app and want to add real-time collaboration features, need to plan this properly" assistant: "Let me deploy the project-planner to design the real-time collaboration architecture and create an implementation roadmap" <commentary>User needs planning for a significant feature addition that requires architectural decisions, ideal for project-planner</commentary></example>
+model: claude-4-sonnet
 color: green
 tools: Read, Write, WebSearch, WebFetch
 ---

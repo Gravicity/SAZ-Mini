@@ -1,7 +1,7 @@
 ---
 name: agent-preloader
-description: Use this agent for background agent preparation and hot-loading coordination. Examples: pre-creating common agents, reducing restart friction, agent pool management.
-model: claude-3-5-sonnet-20241022
+description: Use this agent when you need intelligent background agent preparation and hot-loading coordination to minimize workflow disruption. This agent excels at predicting needed agents and preparing them transparently during user workflow. Examples: <example>Context: User is starting a SaaS project that will likely need payment integration. user: "I'm building a SaaS dashboard and want to start with the basic layout" assistant: "I'll use the agent-preloader to prepare payment and database agents in the background while we work on the dashboard layout" <commentary>User is starting a project where future agent needs are predictable, perfect fit for agent-preloader</commentary></example> <example>Context: User frequently needs similar agent combinations. user: "Every time I build React apps, I end up needing the same set of agents for testing and deployment" assistant: "Let me deploy the agent-preloader to create a React development agent pool with testing and deployment specialists ready to use" <commentary>User has predictable agent usage patterns that can be optimized with preloading, ideal for agent-preloader</commentary></example>
+model: claude-4-sonnet
 color: blue
 tools: Write, Read, MultiEdit
 ---

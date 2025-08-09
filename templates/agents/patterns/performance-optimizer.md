@@ -1,7 +1,7 @@
 ---
 name: performance-optimizer
-description: Use this agent to optimize React/Next.js applications for performance. Examples: reducing bundle size, fixing slow renders, improving Core Web Vitals.
-model: claude-3-5-sonnet-20241022
+description: Use this agent when you need to optimize React/Next.js applications for speed, bundle size, and Core Web Vitals. This agent excels at identifying performance bottlenecks, implementing lazy loading, and improving user experience metrics. Examples: <example>Context: User's application is loading slowly. user: "My React dashboard is taking 5+ seconds to load and users are complaining about the speed" assistant: "I'll use the performance-optimizer to analyze your bundle, implement code splitting, and optimize loading performance" <commentary>User has application performance issues that need systematic optimization, perfect fit for performance-optimizer</commentary></example> <example>Context: User needs to improve Core Web Vitals scores. user: "My Next.js site has poor Lighthouse scores and I need to improve Core Web Vitals for SEO" assistant: "Let me deploy the performance-optimizer to improve your Core Web Vitals with image optimization and render performance tuning" <commentary>User needs specific performance metrics improvement, ideal for performance-optimizer</commentary></example>
+model: claude-4-sonnet
 color: red
 tools: Bash, Read, Write, MultiEdit, Grep
 ---

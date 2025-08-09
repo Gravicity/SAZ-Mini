@@ -180,6 +180,13 @@ cp "$SOURCE_DIR/templates/agents/starter/project-analyzer.md" .claude/agents/sta
 cp "$SOURCE_DIR/templates/agents/starter/project-planner.md" .claude/agents/starter/ 2>/dev/null || true
 cp "$SOURCE_DIR/templates/agents/starter/memory-manager.md" .claude/agents/starter/ 2>/dev/null || true
 cp "$SOURCE_DIR/templates/agents/starter/agent-generator.md" .claude/agents/starter/ 2>/dev/null || true
+cp "$SOURCE_DIR/templates/agents/starter/agent-preloader.md" .claude/agents/starter/ 2>/dev/null || true
+cp "$SOURCE_DIR/templates/agents/starter/brainstorming-specialist.md" .claude/agents/starter/ 2>/dev/null || true
+
+# Copy pattern templates for agent-generator access
+echo -e "${YELLOW}→${NC} Installing pattern templates for agent generation"
+mkdir -p .saz/templates/agents/patterns
+cp "$SOURCE_DIR/templates/agents/patterns/"*.md .saz/templates/agents/patterns/ 2>/dev/null || true
 
 # Create packs directory
 echo -e "${YELLOW}→${NC} Setting up packs registry"
@@ -211,8 +218,8 @@ echo -e "\n${BLUE}Your ${YELLOW}${PROJECT_TYPE}${NC}${BLUE} project is now SAZ-M
 
 echo -e "\n${BLUE}What's ready:${NC}"
 echo -e "  • ${GREEN}SuperAgent-Zero Mini v2.0 identity${NC} in CLAUDE.md"
-echo -e "  • ${GREEN}5 starter agents${NC} in .claude/agents/starter/"
-echo -e "  • ${GREEN}10 production templates${NC} available for generation"  
+echo -e "  • ${GREEN}6 starter agents${NC} in .claude/agents/starter/"
+echo -e "  • ${GREEN}10 production templates${NC} in .saz/templates/agents/patterns/"  
 echo -e "  • ${GREEN}Memory system${NC} in .saz/memory/"
 echo -e "  • ${GREEN}Agent registry${NC} tracking dependencies"
 
@@ -222,6 +229,7 @@ echo -e "  • ${YELLOW}project-planner${NC} - Plans new implementations"
 echo -e "  • ${YELLOW}memory-manager${NC} - RAG search and complex handoffs"
 echo -e "  • ${YELLOW}agent-generator${NC} - Creates fit-for-purpose agents"
 echo -e "  • ${YELLOW}agent-preloader${NC} - Hot-loading and background preparation"
+echo -e "  • ${YELLOW}brainstorming-specialist${NC} - Creative ideation and structured ideas"
 
 echo -e "\n${BLUE}Critical next step:${NC}"
 echo -e "  ${BOLD}${RED}Activate SuperAgent-Zero Mini:${NC}"
@@ -247,6 +255,7 @@ if [[ -f ".gitignore" ]]; then
         echo ".saz/context/" >> .gitignore
         echo ".saz/.installed" >> .gitignore
         echo ".saz/notes.md" >> .gitignore
+        echo ".saz/templates/" >> .gitignore
         echo -e "${YELLOW}→${NC} Added SAZ-Mini patterns to .gitignore"
     fi
 fi
@@ -272,12 +281,12 @@ else
     VALIDATION_PASSED=false
 fi
 
-# Check starter agents (v2.0 has 5 starter agents)
+# Check starter agents (v2.0 has 6 starter agents)
 AGENT_COUNT=$(find .claude/agents/starter -name "*.md" 2>/dev/null | wc -l)
-if [[ $AGENT_COUNT -eq 5 ]]; then
-    echo -e "${GREEN}✓${NC} All 5 starter agents installed"
+if [[ $AGENT_COUNT -eq 6 ]]; then
+    echo -e "${GREEN}✓${NC} All 6 starter agents installed"
 else
-    echo -e "${RED}✗${NC} Expected 5 starter agents, found $AGENT_COUNT"
+    echo -e "${RED}✗${NC} Expected 6 starter agents, found $AGENT_COUNT"
     VALIDATION_PASSED=false
 fi
 

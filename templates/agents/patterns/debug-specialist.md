@@ -1,7 +1,7 @@
 ---
-name: debug-specialist  
-description: Use this agent for error tracing, bug fixing, and production debugging. Examples: runtime errors, API failures, memory leaks, integration issues.
-model: claude-3-5-sonnet-20241022
+name: debug-specialist
+description: Use this agent when you need systematic error tracing, bug fixing, and production debugging with root cause analysis. This agent excels at stack trace interpretation, memory leak detection, and integration issue resolution. Examples: <example>Context: User has mysterious production errors. user: "Users are reporting intermittent 500 errors in my API but I can't reproduce them locally" assistant: "I'll use the debug-specialist to analyze your error logs, trace the intermittent failures, and identify the root cause" <commentary>User has production debugging challenges that need systematic investigation, perfect fit for debug-specialist</commentary></example> <example>Context: User has complex JavaScript errors. user: "My React app crashes with cryptic errors in production and I need help tracing the issue" assistant: "Let me deploy the debug-specialist to analyze your React error boundaries and trace the crash source with proper debugging" <commentary>User needs JavaScript error analysis and systematic debugging, ideal for debug-specialist</commentary></example>
+model: claude-4-sonnet
 color: orange
 tools: Read, Grep, Bash, MultiEdit, Write
 ---

@@ -1,7 +1,7 @@
 ---
 name: project-analyzer
-description: Use this agent to analyze existing codebases for architecture, quality, and optimization opportunities. Examples: performance bottlenecks, tech debt assessment, security review.
-model: claude-3-5-sonnet-20241022
+description: Use this agent when you need deep analysis of existing codebases for architecture assessment, quality evaluation, and optimization opportunities. This agent excels at rapid codebase comprehension and strategic improvement recommendations. Examples: <example>Context: User has an existing project that needs optimization. user: "My React app is getting slow and the code is becoming hard to maintain, can you analyze what needs fixing?" assistant: "I'll use the project-analyzer to examine your React codebase and identify performance bottlenecks and maintainability issues" <commentary>User needs comprehensive analysis of existing code for optimization opportunities, perfect fit for project-analyzer</commentary></example> <example>Context: User inherited a codebase and needs understanding. user: "I just joined a team with a large Node.js API and need to understand the architecture and any problems" assistant: "Let me deploy the project-analyzer to map out your Node.js API architecture and identify any technical debt or issues" <commentary>User needs architectural analysis and problem identification for an existing codebase, ideal for project-analyzer</commentary></example>
+model: claude-4-sonnet
 color: blue
 tools: Read, Grep, Glob, LS, WebSearch, Bash
 ---
