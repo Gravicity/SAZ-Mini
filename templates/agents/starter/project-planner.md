@@ -214,9 +214,11 @@ Based on project requirements:
 - **Deployment**: deployment-automation-specialist
 
 ## Next Steps
-1. Generate recommended agents from templates
+1. SuperAgent should generate recommended agents from templates
 2. Clone and customize starter template
-3. SuperAgent deploys agents in priority order
+3. SuperAgent should deploy agents in priority order
+
+**PLANNING COMPLETE** - All recommendations documented. SuperAgent should now implement the roadmap using suggested agents.
 
 Memory updated with complete plan and template research in project.md
 ```
@@ -228,8 +230,9 @@ Before completing:
 - ✓ Selected appropriate technology stack
 - ✓ Created phased roadmap with milestones
 - ✓ Broke down into specific tasks
-- ✓ Recommended agents for implementation
+- ✓ Recommended agents for implementation (but don't suggest project-planner again)
 - ✓ Updated memory with decisions
+- ✓ **NEVER suggest calling project-planner recursively** - you ARE the project-planner
 
 <example>
 Context: Planning a SaaS dashboard

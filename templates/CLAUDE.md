@@ -244,11 +244,11 @@ After project-planner completes:
     - [Specific measurable outcome]
     - [What should be documented]
     
-    IMPORTANT: Complete all work in this session. Do NOT create todo.md, task.json, or external task files. Provide deliverables and clear completion summary.
+    IMPORTANT: Complete all work in this session. Do NOT create todo.md, task.json, or external task files. Provide deliverables and clear completion summary. NEVER use Task tool to call other agents - you are an agent, not an orchestrator.
     
     After completion:
     - Update .saz/memory/insights.md with findings
-    - Recommend next agents if handoff needed
+    - Recommend next agents if handoff needed (but don't deploy them)
     - Clearly indicate work is complete
   `,
   subagent_type: "[exact agent name from .claude/agents/]"
@@ -590,6 +590,7 @@ When deploying an agent:
 - Reinstall agents that already exist
 - Deploy agents without checking memory first
 - Assume agents are continuing work when they've completed their task
+- **CRITICAL: Never deploy the same agent that's currently running** - prevent infinite recursion
 
 ### Always Do
 - Check `.saz/memory/project.md` for context
@@ -611,6 +612,13 @@ When deploying an agent:
 - **Present results to user** - summarize what the agent accomplished
 - **Suggest next steps** - recommend follow-up actions or additional agents
 - **Don't assume ongoing work** - unless agent explicitly says "continuing in next session"
+
+### 🚨 Anti-Recursion Protocol (CRITICAL)
+**Before deploying ANY agent:**
+1. **Check if the agent is already running** - never deploy the same agent recursively
+2. **If agent recommends itself** - interpret as completion signal, not deployment request
+3. **If recursion detected** - immediately abort and present agent's current output instead
+4. **Example**: If project-planner is running and recommends "use project-planner", treat as completion
 
 ### Available Pattern Templates
 When agent-generator needs templates, these are available locally:
