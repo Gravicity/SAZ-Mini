@@ -210,9 +210,9 @@ echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━�
 echo -e "\n${BLUE}Your ${YELLOW}${PROJECT_TYPE}${NC}${BLUE} project is now SAZ-Mini enabled!${NC}"
 
 echo -e "\n${BLUE}What's ready:${NC}"
-echo -e "  • ${GREEN}SuperAgent-Zero Mini identity${NC} in CLAUDE.md"
-echo -e "  • ${GREEN}4 starter agents${NC} in .claude/agents/starter/"
-echo -e "  • ${GREEN}5 production templates${NC} available for generation"  
+echo -e "  • ${GREEN}SuperAgent-Zero Mini v2.0 identity${NC} in CLAUDE.md"
+echo -e "  • ${GREEN}5 starter agents${NC} in .claude/agents/starter/"
+echo -e "  • ${GREEN}10 production templates${NC} available for generation"  
 echo -e "  • ${GREEN}Memory system${NC} in .saz/memory/"
 echo -e "  • ${GREEN}Agent registry${NC} tracking dependencies"
 
@@ -221,6 +221,7 @@ echo -e "  • ${YELLOW}project-analyzer${NC} - Analyzes existing codebases"
 echo -e "  • ${YELLOW}project-planner${NC} - Plans new implementations"
 echo -e "  • ${YELLOW}memory-manager${NC} - RAG search and complex handoffs"
 echo -e "  • ${YELLOW}agent-generator${NC} - Creates fit-for-purpose agents"
+echo -e "  • ${YELLOW}agent-preloader${NC} - Hot-loading and background preparation"
 
 echo -e "\n${BLUE}Critical next step:${NC}"
 echo -e "  ${BOLD}${RED}Activate SuperAgent-Zero Mini:${NC}"
@@ -271,12 +272,12 @@ else
     VALIDATION_PASSED=false
 fi
 
-# Check starter agents
+# Check starter agents (v2.0 has 5 starter agents)
 AGENT_COUNT=$(find .claude/agents/starter -name "*.md" 2>/dev/null | wc -l)
-if [[ $AGENT_COUNT -eq 4 ]]; then
-    echo -e "${GREEN}✓${NC} All 4 starter agents installed"
+if [[ $AGENT_COUNT -eq 5 ]]; then
+    echo -e "${GREEN}✓${NC} All 5 starter agents installed"
 else
-    echo -e "${RED}✗${NC} Expected 4 starter agents, found $AGENT_COUNT"
+    echo -e "${RED}✗${NC} Expected 5 starter agents, found $AGENT_COUNT"
     VALIDATION_PASSED=false
 fi
 

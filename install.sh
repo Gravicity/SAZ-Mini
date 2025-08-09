@@ -182,17 +182,17 @@ fi
 echo -e "${YELLOW}→${NC} Validating installation..."
 NEW_VERSION=$(cat "$INSTALL_DIR/VERSION")
 
-# Count templates
+# Count templates (v2.0 has 10 templates)
 TEMPLATE_COUNT=$(find "$INSTALL_DIR/templates/agents/patterns" -name "*.md" ! -name "README.md" 2>/dev/null | wc -l | tr -d ' ')
-if [[ "$TEMPLATE_COUNT" -ne 5 ]]; then
-    echo -e "${RED}✗${NC} Template validation failed - expected 5, found $TEMPLATE_COUNT"
+if [[ "$TEMPLATE_COUNT" -ne 10 ]]; then
+    echo -e "${RED}✗${NC} Template validation failed - expected 10, found $TEMPLATE_COUNT"
     exit 1
 fi
 
-# Count starter agents
+# Count starter agents (v2.0 has 5 starter agents)
 STARTER_COUNT=$(find "$INSTALL_DIR/templates/agents/starter" -name "*.md" 2>/dev/null | wc -l | tr -d ' ')
-if [[ "$STARTER_COUNT" -ne 4 ]]; then
-    echo -e "${RED}✗${NC} Starter agent validation failed - expected 4, found $STARTER_COUNT"
+if [[ "$STARTER_COUNT" -ne 5 ]]; then
+    echo -e "${RED}✗${NC} Starter agent validation failed - expected 5, found $STARTER_COUNT"
     exit 1
 fi
 
@@ -210,9 +210,9 @@ echo -e "${GREEN}${BOLD}        🎉 SAZ-Mini Installation Complete! 🎉${NC}"
 echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 
 echo -e "\n${BLUE}What's installed:${NC}"
-echo -e "  • ${GREEN}4 starter agents${NC} (planner, analyzer, memory-manager, agent-generator)"
-echo -e "  • ${GREEN}5 production templates${NC} (Next.js, API, Database, UI, Deployment)"
-echo -e "  • ${GREEN}3 proven workflows${NC} (SaaS app, optimization, feature addition)"
+echo -e "  • ${GREEN}5 starter agents${NC} (planner, analyzer, memory-manager, agent-generator, agent-preloader)"
+echo -e "  • ${GREEN}10 production templates${NC} (Next.js, API, Database, UI, Deployment + 5 new v2.0 templates)"
+echo -e "  • ${GREEN}Enhanced workflows${NC} with emergency response and educational modes"
 echo -e "  • ${GREEN}Health check tool${NC} for troubleshooting"
 
 echo -e "\n${BLUE}Next steps:${NC}"
