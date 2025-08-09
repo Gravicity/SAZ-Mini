@@ -223,11 +223,14 @@ echo -e "  • ${YELLOW}memory-manager${NC} - RAG search and complex handoffs"
 echo -e "  • ${YELLOW}agent-generator${NC} - Creates fit-for-purpose agents"
 
 echo -e "\n${BLUE}Critical next step:${NC}"
-echo -e "  ${BOLD}${RED}Restart Claude Code${NC}${BOLD} to activate SuperAgent-Zero-Mini${NC}"
-echo -e "  1. Press ${YELLOW}Ctrl+C${NC} twice to exit Claude Code"
-echo -e "  2. Run ${YELLOW}claude --resume${NC} to restart with new agents"
+echo -e "  ${BOLD}${RED}Activate SuperAgent-Zero Mini:${NC}"
+echo -e "  ${YELLOW}Option 1:${NC} Start fresh Claude Code session"
+echo -e "    - Exit Claude Code (Ctrl+C twice)"
+echo -e "    - Run: ${GREEN}claude${NC}"
+echo -e "  ${YELLOW}Option 2:${NC} If already in Claude Code"
+echo -e "    - Type: ${GREEN}/init${NC}"
 
-echo -e "\n${BLUE}Once restarted, try:${NC}"
+echo -e "\n${BLUE}Once activated, try:${NC}"
 echo -e "  ${YELLOW}\"What should we work on first?\"${NC}"
 echo -e "  ${YELLOW}\"Help me build a [describe your project]\"${NC}"
 echo -e "  ${YELLOW}\"Analyze this codebase for improvements\"${NC}"
@@ -294,5 +297,11 @@ else
     echo -e "  ${YELLOW}~/.saz-mini/health-check.sh${NC}"
 fi
 
-# Final reminder
-echo -e "\n${BLUE}Remember:${NC} ${BOLD}Restart Claude Code${NC} to activate SuperAgent-Zero-Mini"
+# Final activation instructions
+echo -e "\n${BLUE}Critical next step:${NC}"
+echo -e "  ${BOLD}Activate SuperAgent-Zero Mini:${NC}"
+echo -e "  ${YELLOW}1.${NC} Exit Claude Code (Ctrl+C twice) if running"
+echo -e "  ${YELLOW}2.${NC} Start fresh: ${GREEN}claude${NC}"
+echo -e "  ${YELLOW}3.${NC} Or if already in Claude Code: ${GREEN}/init${NC}"
+echo -e "\n${BLUE}Once activated, try:${NC}"
+echo -e "  ${YELLOW}\"What should we work on first?\"${NC}"

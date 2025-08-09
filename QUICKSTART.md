@@ -13,7 +13,7 @@ curl -sSL https://raw.githubusercontent.com/Gravicity/SAZ-Mini/main/install.sh |
 cd /your/project
 ~/.saz-mini/setup.sh
 
-# Restart Claude Code: Ctrl+C twice, then: claude --resume
+# Activate SuperAgent: claude (or /init if already running)
 ```
 
 ### Alternative: Clone First (to browse templates)

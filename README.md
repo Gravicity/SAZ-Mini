@@ -15,8 +15,14 @@ curl -sSL https://raw.githubusercontent.com/Gravicity/SAZ-Mini/main/install.sh |
 cd /your/project
 ~/.saz-mini/setup.sh
 
-# 3. Restart Claude Code
-# Press Ctrl+C twice, then: claude --resume
+# 3. Activate SuperAgent-Zero Mini
+# Option A: Fresh start (recommended first time)
+Press Ctrl+C twice to exit, then:
+claude  # Start fresh session in project directory
+
+# Option B: If already in Claude Code
+/init   # Reinitialize to load CLAUDE.md
+
 # SuperAgent-Zero Mini v2.0 activates automatically
 ```
 
@@ -32,9 +38,11 @@ cat README.md                   # Full documentation
 # 2. Install when ready
 chmod +x install.sh && ./install.sh
 
-# 3. Setup project and restart Claude Code (same as Option 1)
+# 3. Setup project and activate SuperAgent
 cd /your/project
 ~/.saz-mini/setup.sh
+# Then start Claude Code: claude
+# Or if already running: /init
 ```
 
 **First interaction:**
