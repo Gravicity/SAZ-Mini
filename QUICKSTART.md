@@ -4,17 +4,22 @@
 
 ## ⚡ Installation (2 minutes)
 
+### Quick Install (One-liner)
 ```bash
-# 1. Download and install globally
-git clone https://github.com/Gravicity/SAZ-Mini.git && cd SAZ-Mini
-chmod +x install.sh && ./install.sh
+# Install SAZ-Mini globally
+curl -sSL https://raw.githubusercontent.com/Gravicity/SAZ-Mini/main/install.sh | bash
 
-# 2. Setup any project  
+# Setup your project  
 cd /your/project
 ~/.saz-mini/setup.sh
 
-# 3. Restart Claude Code
-# Ctrl+C twice, then: claude --resume
+# Restart Claude Code: Ctrl+C twice, then: claude --resume
+```
+
+### Alternative: Clone First (to browse templates)
+```bash
+git clone https://github.com/Gravicity/SAZ-Mini.git && cd SAZ-Mini
+chmod +x install.sh && ./install.sh
 ```
 
 ## 🚀 First Steps

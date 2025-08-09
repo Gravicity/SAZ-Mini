@@ -6,10 +6,10 @@ SAZ-Mini v2.0 represents a **quantum leap in AI-assisted development** - from ba
 
 ## 🚀 Quick Start
 
+### Option 1: Quick Install (Recommended for most users)
 ```bash
-# 1. Install globally (one time)
-git clone https://github.com/Gravicity/SAZ-Mini.git && cd SAZ-Mini
-chmod +x install.sh && ./install.sh
+# 1. Install globally with one command
+curl -sSL https://raw.githubusercontent.com/Gravicity/SAZ-Mini/main/install.sh | bash
 
 # 2. Setup any project  
 cd /your/project
@@ -18,6 +18,23 @@ cd /your/project
 # 3. Restart Claude Code
 # Press Ctrl+C twice, then: claude --resume
 # SuperAgent-Zero Mini v2.0 activates automatically
+```
+
+### Option 2: Clone & Install (For contributors and template browsing)
+```bash
+# 1. Clone repository to inspect templates and agents first
+git clone https://github.com/Gravicity/SAZ-Mini.git && cd SAZ-Mini
+
+# Browse templates and documentation
+ls templates/agents/patterns/  # View all 10 production templates
+cat README.md                   # Full documentation
+
+# 2. Install when ready
+chmod +x install.sh && ./install.sh
+
+# 3. Setup project and restart Claude Code (same as Option 1)
+cd /your/project
+~/.saz-mini/setup.sh
 ```
 
 **First interaction:**
@@ -293,10 +310,13 @@ ls .claude/agents/preloaded/
 
 ### Intelligent Updates
 ```bash
-# Smart framework updates (preserves intelligence)
+# Update to latest version (preserves your customizations)
+curl -sSL https://raw.githubusercontent.com/Gravicity/SAZ-Mini/main/install.sh | bash
+
+# Or use the built-in updater
 ~/.saz-mini/update.sh
 
-# Capability assessment
+# Verify update success
 ~/.saz-mini/health-check.sh --intelligence-check
 ```
 

@@ -26,7 +26,7 @@ handle_error() {
     echo -e "\n${RED}✗ Installation failed!${NC}"
     echo -e "${RED}Error on line $1${NC}"
     echo -e "Please check the error above and try again."
-    echo -e "If the problem persists, create an issue at: https://github.com/yourusername/saz-mini/issues"
+    echo -e "If the problem persists, create an issue at: https://github.com/Gravicity/SAZ-Mini/issues"
     exit 1
 }
 trap 'handle_error $LINENO' ERR
@@ -53,16 +53,43 @@ if [[ ! -w "$HOME" ]]; then
 fi
 echo -e "${GREEN}✓${NC} Home directory writable"
 
-# Get the directory where install.sh is located
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-echo -e "${GREEN}✓${NC} Installation source: ${BLUE}$SCRIPT_DIR${NC}"
+# Determine if running from curl or local clone
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" 2>/dev/null && pwd || echo "")"
+TEMP_DIR=""
+
+# Check if we're running from a piped curl command or local directory
+if [[ -z "$SCRIPT_DIR" ]] || [[ "$SCRIPT_DIR" == "/tmp" ]] || [[ ! -d "$SCRIPT_DIR/templates" ]]; then
+    # Running from curl - need to download framework
+    echo -e "${GREEN}✓${NC} Downloading SAZ-Mini framework from GitHub..."
+    
+    # Create temporary directory
+    TEMP_DIR=$(mktemp -d -t saz-mini-install-XXXXXX)
+    cd "$TEMP_DIR"
+    
+    # Download and extract latest release
+    if command -v curl &> /dev/null; then
+        curl -sSL https://github.com/Gravicity/SAZ-Mini/archive/main.tar.gz | tar xz --strip-components=1
+    elif command -v wget &> /dev/null; then
+        wget -qO- https://github.com/Gravicity/SAZ-Mini/archive/main.tar.gz | tar xz --strip-components=1
+    else
+        echo -e "${RED}✗${NC} Neither curl nor wget found. Please install one."
+        exit 1
+    fi
+    
+    SCRIPT_DIR="$TEMP_DIR"
+    echo -e "${GREEN}✓${NC} Framework downloaded successfully"
+else
+    # Running from local clone
+    echo -e "${GREEN}✓${NC} Installation source: ${BLUE}$SCRIPT_DIR${NC}"
+fi
 
 # Validate source files exist
 REQUIRED_FILES=("templates" "setup.sh" "update.sh" "packs" "VERSION")
 for file in "${REQUIRED_FILES[@]}"; do
     if [[ ! -e "$SCRIPT_DIR/$file" ]]; then
         echo -e "${RED}✗${NC} Missing required file: $file"
-        echo -e "  Please ensure you have the complete SAZ-Mini distribution"
+        echo -e "  Download may have failed. Please try again."
+        [[ -n "$TEMP_DIR" ]] && rm -rf "$TEMP_DIR"
         exit 1
     fi
 done
@@ -183,3 +210,8 @@ echo -e "  • Update framework: ${YELLOW}~/.saz-mini/update.sh${NC}"
 echo -e "  • Project setup: ${YELLOW}~/.saz-mini/setup.sh --interactive${NC}"
 
 echo -e "\n${GREEN}Ready to transform your development workflow with intelligent AI orchestration!${NC}"
+
+# Cleanup temporary directory if used
+if [[ -n "$TEMP_DIR" ]]; then
+    rm -rf "$TEMP_DIR"
+fi
