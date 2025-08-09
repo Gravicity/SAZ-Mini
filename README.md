@@ -75,16 +75,16 @@ SuperAgent: 🎭 Multi-agent orchestration required.
 ### 📚 Educational Intelligence  
 **Adapts complexity to learning context:**
 - **Beginner Detection**: "new to", "explain basics", "step by step"
-- **Response**: tutorial-guide agent with simplified explanations
+- **Response**: Creates tutorial-guide agent via agent-generator, then provides simplified explanations
 - **Progressive Learning**: Complexity grows with understanding
-- **Example**: "Teach me React hooks" → concept-first tutorial approach
+- **Example**: "Teach me React hooks" → create tutorial-guide → concept-first approach
 
 ### 🧠 Contextual Intelligence
 **Smart agent selection based on project context:**
 - **Tech Stack Detection**: Scans files for framework indicators
 - **Complexity Assessment**: Simple → Standard → Enterprise coordination  
-- **Skill Level Matching**: Beginners get tutorials, experts get optimization
-- **Domain Patterns**: SaaS → specific agent combinations
+- **Skill Level Matching**: Beginners get tutorial creation, experts get optimization specialists
+- **Domain Patterns**: SaaS → creates specific agent combinations via agent-generator
 
 ### ⚡ Hot-Loading & Background Preparation
 **Eliminates restart friction:**
@@ -102,36 +102,54 @@ SuperAgent: 🎭 Multi-agent orchestration required.
 
 ## 🏗️ Enhanced Architecture
 
-### 6 Starter Agents (Expanded from 4)
+### 6 Starter Agents (Immediately Available)
 - **project-planner**: Enhanced with template research and complexity assessment
 - **project-analyzer**: Context-aware analysis with educational explanations
 - **memory-manager**: RAG search and sophisticated handoff coordination  
-- **agent-generator**: Batch creation and agent group coordination
+- **agent-generator**: Creates pattern templates on demand (CRITICAL FOR OTHERS)
 - **agent-preloader**: Background preparation and hot-loading management
 - **brainstorming-specialist**: Creative ideation and structured idea documentation (NEW)
 
-### 10 Production Templates (Doubled from 5)
-**Original Templates:**
+### 10 Production Templates (Created via agent-generator)
+**Frontend & Full-Stack:**
 - **nextjs-app-builder**: Modern React/Next.js apps with auth & deployment
+- **ui-component-builder**: Component libraries and design systems
+- **tutorial-guide**: Educational step-by-step guidance and concept explanation
+
+**Backend & Integration:**
 - **api-integration-specialist**: Third-party APIs and robust client development
 - **database-architect**: Schema design and query optimization
-- **ui-component-builder**: Component libraries and design systems
-- **deployment-automation-specialist**: CI/CD pipelines and production setup
+- **integration-coordinator**: Complex multi-system integrations and API orchestration
 
-**New v2.0 Templates:**
+**Operations & Optimization:**
+- **deployment-automation-specialist**: CI/CD pipelines and production setup
 - **performance-optimizer**: React/Next.js performance tuning and Core Web Vitals
 - **debug-specialist**: Error tracing, bug fixing, and production debugging
+
+**Specialized:**
 - **pdf-generator**: Document generation and reporting systems
-- **integration-coordinator**: Complex multi-system integrations and API orchestration
-- **tutorial-guide**: Educational step-by-step guidance and concept explanation
+
+> **Note**: All templates require agent-generator to create first, then restart Claude Code to use
+
+### 🔄 Two-Step Agent Creation Process
+**How SAZ-Mini v2.0 Works:**
+
+**Step 1 - Starter Agents (Immediate):**
+- 6 agents ready to use immediately after setup
+- No creation needed: project-planner, project-analyzer, memory-manager, agent-generator, agent-preloader, brainstorming-specialist
+
+**Step 2 - Pattern Templates (On-Demand):**
+- 10 specialized templates created via agent-generator when needed
+- Process: `Task(agent-generator) → create specialist → restart Claude Code → Task(specialist)`
+- Examples: tutorial-guide, performance-optimizer, nextjs-app-builder
 
 ### Enhanced Workflows
 **Intelligent Workflow Selection:**
-- **Emergency Response**: Direct debugging and critical issue resolution
-- **Learning Paths**: Progressive educational workflows for skill development
-- **Simple Projects**: Streamlined single-agent deployment 
-- **Complex Projects**: Multi-agent orchestration with parallel execution
-- **Enterprise Integration**: Sophisticated multi-system coordination
+- **Emergency Response**: Direct debugging with general-purpose agent (no delays)
+- **Learning Paths**: Create tutorial-guide → progressive educational workflows  
+- **Simple Projects**: Create specific specialist → streamlined deployment
+- **Complex Projects**: Create multiple specialists → multi-agent orchestration
+- **Enterprise Integration**: Create integration-coordinator → sophisticated coordination
 
 ## 🎯 Adaptive Intelligence Examples
 
@@ -147,6 +165,7 @@ SuperAgent: 🚨 Emergency - direct action mode activated
 ```bash
 User: "I'm learning React, help me understand useState"
 SuperAgent: 📚 Educational mode - beginner level detected
+→ Task(agent-generator) to create tutorial-guide → restart
 → Task(tutorial-guide) with React hooks, step-by-step approach
 → Progressive examples from simple to complex
 ```
@@ -155,6 +174,7 @@ SuperAgent: 📚 Educational mode - beginner level detected
 ```bash  
 User: "My 2MB bundle React dashboard is slow"
 SuperAgent: 🧠 Production performance issue detected
+→ Task(agent-generator) to create performance-optimizer → restart
 → Task(performance-optimizer) with bundle analysis context
 → Advanced optimization techniques, not educational explanations
 ```
@@ -163,10 +183,10 @@ SuperAgent: 🧠 Production performance issue detected
 ```bash
 User: "Build full e-commerce: Next.js, payments, inventory, admin"
 SuperAgent: 🎭 Complex project - multi-agent coordination required
-→ Phase 1: project-planner (architecture)
-→ Phase 2: Parallel execution: nextjs-app-builder, database-architect, api-integration-specialist  
-→ Phase 3: ui-component-builder (admin dashboard)
-→ Phase 4: deployment-automation-specialist (production)
+→ Phase 1: project-planner (architecture) - STARTER AGENT
+→ Phase 2: Create & deploy: nextjs-app-builder, database-architect, api-integration-specialist  
+→ Phase 3: Create ui-component-builder (admin dashboard)
+→ Phase 4: Create deployment-automation-specialist (production)
 ```
 
 ## 📊 Intelligence Matrix
@@ -174,11 +194,11 @@ SuperAgent: 🎭 Complex project - multi-agent coordination required
 | **Context** | **v1.0 Response** | **v2.0 Adaptive Response** |
 |-------------|-------------------|---------------------------|
 | "URGENT: Site down!" | project-analyzer → slow analysis | 🚨 general-purpose → immediate debugging |
-| "Teach me React" | project-planner → overwhelming roadmap | 📚 tutorial-guide → step-by-step learning |  
-| "Simple todo app" | project-planner → over-engineering | 🧠 Direct specialist → right-sized solution |
-| "I have an app idea..." | project-planner → premature planning | 💡 brainstorming-specialist → structured ideation |
-| "Enterprise integration" | Single agent struggle | 🎭 integration-coordinator → multi-system orchestration |
-| "Performance issues" | Generic project-analyzer | 🧠 performance-optimizer → targeted optimization |
+| "Teach me React" | project-planner → overwhelming roadmap | 📚 create tutorial-guide → step-by-step learning |  
+| "Simple todo app" | project-planner → over-engineering | 🧠 create specialist → right-sized solution |
+| "I have an app idea..." | project-planner → premature planning | 💡 brainstorming-specialist → structured ideation (STARTER) |
+| "Enterprise integration" | Single agent struggle | 🎭 create integration-coordinator → multi-system orchestration |
+| "Performance issues" | Generic project-analyzer | 🧠 create performance-optimizer → targeted optimization |
 
 ## 🏗️ Installation & Architecture
 
@@ -227,12 +247,12 @@ Emergency Keywords → Skip Orchestration → Deploy General-Purpose → Stream 
 
 ### 📚 Educational Learning Path
 ```
-Learning Keywords → Skill Assessment → tutorial-guide → Progressive Complexity → Concept Reinforcement
+Learning Keywords → Skill Assessment → Create tutorial-guide → Progressive Complexity → Concept Reinforcement
 ```
 
 ### 🎭 Multi-Agent Orchestration  
 ```
-Complex Project → Context Analysis → Agent Team Design → Parallel Deployment → Shared Memory Coordination → Progress Tracking
+Complex Project → Context Analysis → Create Agent Team → Parallel Deployment → Shared Memory Coordination → Progress Tracking
 ```
 
 ### ⚡ Hot-Loading Enhancement
@@ -260,10 +280,11 @@ User: "I know React basics but want to learn performance optimization"
 
 SuperAgent Response:  
 📚 Educational mode - intermediate level detected
-→ I'll teach performance concepts with practical examples
+→ Creating specialized tutorial agent for performance concepts
+→ Task(agent-generator) to create tutorial-guide → restart
 → Task(tutorial-guide) with React performance, intermediate approach
 
-Result: Concept explanations first, then hands-on optimization exercises
+Result: Specialized tutorial agent created, then concept explanations with hands-on exercises
 ```
 
 ### Scenario 3: Enterprise Multi-System Integration
@@ -272,23 +293,24 @@ User: "Integrate Salesforce CRM, SAP ERP, and 3 custom APIs with real-time sync"
 
 SuperAgent Response:
 🎭 Complex enterprise integration - multi-system coordination required  
-→ Task(integration-coordinator) with 5-system architecture context
-→ Comprehensive integration design with orchestration patterns
+→ Creating specialized integration coordinator for 5-system architecture
+→ Task(agent-generator) to create integration-coordinator → restart
+→ Task(integration-coordinator) with enterprise context and orchestration patterns
 
-Result: Enterprise-grade multi-system integration strategy with proper error handling
+Result: Enterprise-grade multi-system integration specialist created and deployed
 ```
 
-### Scenario 4: Background Agent Preparation
+### Scenario 4: SaaS Dashboard Development
 ```
-User: "Building SaaS dashboard, will need payments eventually"
+User: "Building SaaS dashboard with Next.js"
 
 SuperAgent Response:
-🧠 SaaS pattern detected - preparing relevant agents
-→ Task(nextjs-app-builder) for immediate dashboard work
-→ Background: payment-integration-specialist being prepared
-→ Hot-loading: Available in ~2 minutes vs restart requirement
+🧠 SaaS pattern detected - creating relevant specialist
+→ Task(agent-generator) to create nextjs-app-builder → restart  
+→ Task(nextjs-app-builder) for SaaS dashboard with authentication and features
+→ Future: Can create payment/database specialists as needed
 
-Result: Immediate work starts, future needs prepared transparently
+Result: Specialized SaaS builder created, immediate dashboard development begins
 ```
 
 ## 🎯 Success Metrics & Improvements
@@ -414,6 +436,16 @@ MIT License - Use freely, extend as needed, share improvements with the communit
 
 **SAZ-Mini v2.0 transforms Claude Code into an intelligent, adaptive development companion that understands context, responds to urgency, guides learning, and orchestrates sophisticated workflows.**
 
+## 🔑 **Key Architecture Summary**
+
+**Immediate (6 Starter Agents):**
+- project-planner, project-analyzer, memory-manager, **agent-generator**, agent-preloader, brainstorming-specialist
+
+**On-Demand (10 Pattern Templates):**
+- tutorial-guide, performance-optimizer, nextjs-app-builder, api-integration-specialist, database-architect, ui-component-builder, deployment-automation-specialist, debug-specialist, pdf-generator, integration-coordinator
+
+**Process:** `agent-generator creates → restart Claude Code → specialist available`
+
 🚀 **Install SAZ-Mini v2.0 and experience truly intelligent development orchestration.**
 
-*"From basic agent dispatch to adaptive intelligence - SAZ-Mini v2.0 is the evolution your development workflow has been waiting for."*
+*"From basic agent dispatch to adaptive intelligence with on-demand specialist creation - SAZ-Mini v2.0 is the evolution your development workflow has been waiting for."*
