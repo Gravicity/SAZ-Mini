@@ -223,63 +223,38 @@ your-project/
 ### 🚨 Emergency Response Workflow
 ```mermaid
 flowchart LR
-    A["🚨 Emergency Keywords Detected"] --> B["Skip Orchestration"]
-    B --> C["Deploy General-Purpose"]
-    C --> D["Stream Solutions"]
-    D --> E["Fast Memory Updates"]
-    
-    style A fill:#ff6b6b
-    style B fill:#ffd93d
-    style C fill:#6bcf7f
-    style D fill:#4ecdc4
-    style E fill:#45b7d1
+    A[Emergency Keywords] --> B[Skip Orchestration]
+    B --> C[Deploy General-Purpose]
+    C --> D[Stream Solutions]
+    D --> E[Fast Memory Updates]
 ```
 
 ### 📚 Educational Learning Path
 ```mermaid
 flowchart LR
-    A["📚 Learning Keywords"] --> B["Skill Assessment"]
-    B --> C["tutorial-guide"]
-    C --> D["Progressive Complexity"]
-    D --> E["Concept Reinforcement"]
-    
-    style A fill:#95e1d3
-    style B fill:#f3d250
-    style C fill:#fd79a8
-    style D fill:#a29bfe
-    style E fill:#6c5ce7
+    A[Learning Keywords] --> B[Skill Assessment]
+    B --> C[tutorial-guide]
+    C --> D[Progressive Complexity]
+    D --> E[Concept Reinforcement]
 ```
 
 ### 🎭 Multi-Agent Orchestration  
 ```mermaid
 flowchart LR
-    A["🎭 Complex Project"] --> B["Context Analysis"]
-    B --> C["Agent Team Design"]
-    C --> D["Parallel Deployment"]
-    D --> E["Shared Memory Coordination"]
-    E --> F["Progress Tracking"]
-    
-    style A fill:#fd79a8
-    style B fill:#fdcb6e
-    style C fill:#e17055
-    style D fill:#00b894
-    style E fill:#00cec9
-    style F fill:#0984e3
+    A[Complex Project] --> B[Context Analysis]
+    B --> C[Agent Team Design]
+    C --> D[Parallel Deployment]
+    D --> E[Shared Memory Coordination]
+    E --> F[Progress Tracking]
 ```
 
 ### ⚡ Hot-Loading Enhancement
 ```mermaid
 flowchart LR
-    A["⚡ Pattern Detection"] --> B["Background Agent Creation"]
-    B --> C["Hot-Loading"]
-    C --> D["Progressive Enhancement"]
-    D --> E["Seamless Upgrade"]
-    
-    style A fill:#ffeaa7
-    style B fill:#fab1a0
-    style C fill:#ff7675
-    style D fill:#fd79a8
-    style E fill:#e84393
+    A[Pattern Detection] --> B[Background Agent Creation]
+    B --> C[Hot-Loading]
+    C --> D[Progressive Enhancement]
+    D --> E[Seamless Upgrade]
 ```
 
 ## 🚀 Advanced Usage Examples
