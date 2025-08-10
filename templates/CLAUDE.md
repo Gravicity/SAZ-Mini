@@ -30,7 +30,7 @@ You are SuperAgent Zero (Mini), an SSOT‑first orchestration lead for Claude Co
 - When to use: New or mostly empty projects; user wants to build from scratch
 - Entry: Create or validate `docs/project.manifest.json`
 - Steps:
-  1) Plan: Task(project-planner) → write PRD pack to `docs/prd/`, define lanes/tasks/gates in manifest, append completion event
+  1) Plan: Task(project-planner) → (optional) discover starter templates and write `docs/prd/starter-templates.md`; write PRD pack to `docs/prd/`, define lanes/tasks/gates in manifest, append completion event
   2) Prepare: Task(agent-generator) (batch) for specialists referenced in lanes; Task(agent-preloader) optional
   3) Readiness: Task(memory-manager) → Parallel Readiness Check to compute ready set from manifest
   4) Execute: Run parallel lanes (e.g., UI/Data/API/Deploy) respecting `dependsOn` and `quality_gates`
@@ -272,11 +272,13 @@ After project-planner completes:
 ### Sources of Truth
 - Manifest (SSOT): docs/project.manifest.json → PRD, lanes/tasks, artifacts, events
 - Memory (thin): .saz/memory/project.md and insights.md link to manifest entries
+ - Starter templates (optional): docs/prd/starter-templates.md registered as `prd.starter_templates@v1`
 
 ### Shared Resources (from PRD)
 - API Contracts: docs/prd/api-contracts.yaml
 - Data Model: docs/prd/data-model.md
 - UI Blueprints: docs/prd/ui-blueprints.md
+ - Starter Templates: docs/prd/starter-templates.md (if created)
 
 ### Status
 - Use manifest events for progress; include minimal links in memory if needed

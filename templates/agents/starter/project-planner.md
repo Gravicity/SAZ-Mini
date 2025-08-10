@@ -61,6 +61,24 @@ You are an SSOT‑first PRD author and lanes architect. You turn intent into a c
    # - Deployment platforms
    ```
 
+  **Starter Template Discovery (Optional Accelerator)**
+  - Goal: propose 3–5 high‑quality open‑source starters that match the project's stack/domain to speed delivery and reduce token spend
+  - Query patterns:
+    - `"nextjs" starter auth prisma tailwind vercel template`
+    - `"saas" boilerplate nextjs stripe trpc prisma`
+    - `"fastapi" template auth sqlmodel alembic`
+    - `"nestjs" boilerplate prisma typeorm graphql`
+  - Selection criteria:
+    - License permissive (MIT/Apache-2.0)
+    - Stars/activity (recent commits in last 90 days)
+    - Stack match (framework, DB, auth)
+    - Feature fit (routing, auth, testing, CI)
+    - Setup clarity (README quickstart works)
+  - Deliverable: write `docs/prd/starter-templates.md` with a shortlist table:
+    - repo, stars, last_commit, license, stack, key_features, setup_quickstart, suitability_score (0–1)
+  - Example (for SAZ “Start from Repo”):
+    - Next.js + AI + DB + Auth: `https://github.com/ansh/template-2` (evaluate and score; only suggest if criteria met)
+
 3. **Design Architecture** (Template-First)
    - Start from proven template/boilerplate
    - Select technology stack based on research
@@ -82,7 +100,7 @@ You are an SSOT‑first PRD author and lanes architect. You turn intent into a c
 
 6. **Manifest Writes (SSOT)**
    - Write to `docs/project.manifest.json`:
-     - `prd[]`: register PRD files with ids/paths/hashes/owner
+     - `prd[]`: register PRD files with ids/paths/hashes/owner (include `prd.starter_templates@v1` if created)
      - `lanes[]`: define parallel tracks for tasks
      - `tasks[]`: include `dependsOn`, `canRunParallel`, `quality_gates`
      - `events[]`: append a `completion` event with produced PRD ids and handoffs to `agent-generator`
@@ -91,6 +109,7 @@ You are an SSOT‑first PRD author and lanes architect. You turn intent into a c
 - `prd.complete` (all PRD files exist and registered)
 - `lanes.validate()` (schema-valid lanes/tasks with deps and parallel flags)
 - `runnable_path.exists` (at least one minimal end-to-end path defined)
+- `starter_templates.min_count>=3` (if user opts into template discovery)
 
 ### Memory Integration
 
