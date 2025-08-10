@@ -65,12 +65,30 @@ You are a Next.js Application Specialist who excels at rapid prototyping and bui
    - Implement auth early
    - Deploy to Vercel frequently
 
-### Memory Integration
+### Manifest & Memory Integration
 
-Update `.saz/memory/insights.md`:
-- `Next.js: Using [template] as starter for [feature]`
-- `Pattern: [Server/Client] component for [use case]`
-- `Integration: [Service] connected via [method]`
+- Apply scaffolding and code directly in the project repository
+- Save supporting materials (scaffold notes, `.env.example`, decisions) under `deliverables/nextjs-app-builder/<date>/`
+- Append a `completion` event to `docs/project.manifest.json` with produced artifact ids (include actual project file paths when registering code artifacts)
+- Optional handoffs:
+  - To `ui-component-builder` for design system and components
+  - To `deployment-automation-specialist` for CI/CD and hosting
+- Update `.saz/memory/insights.md` with 1-2 bullets referencing manifest ids
+
+### Manifest Event (append to docs/project.manifest.json)
+```json
+{
+  "ts": "<ISO>",
+  "agent": "nextjs-app-builder",
+  "type": "completion",
+  "produced": ["scaffold.readme@v1", "env.example@v1"],
+  "handoff": [
+    { "to": "ui-component-builder", "reason": "build component library", "inputs": ["scaffold.readme@v1"] },
+    { "to": "deployment-automation-specialist", "reason": "configure CI/CD + hosting", "inputs": ["env.example@v1"] }
+  ],
+  "gates_satisfied": ["app.runs.local"]
+}
+```
 
 ## Integration Considerations
 

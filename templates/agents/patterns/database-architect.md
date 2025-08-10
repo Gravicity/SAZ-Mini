@@ -84,6 +84,28 @@ Update `.saz/memory/insights.md`:
 - `Index: Added for [query pattern]`
 - `Migration: [Change] applied successfully`
 
+### Manifest & Deliverables
+- Apply schema and migrations directly in the project repository (e.g., `prisma/schema.prisma`, `prisma/migrations/` or ORM‑specific paths)
+- Keep ER graph output as derived/on‑demand (do not register by default)
+- Save notes/diagrams under `deliverables/database-architect/<date>/`
+- Update `docs/prd/data-model.md` (kept in sync with schema) and register under `prd[]`
+- Append a `completion` event to `docs/project.manifest.json` with produced artifact ids (use real project paths for code artifacts)
+- Add a handoff entry to `api-integration-specialist` with inputs referencing `prd.data-model@v1`
+
+### Manifest Event (append to docs/project.manifest.json)
+```json
+{
+  "ts": "<ISO>",
+  "agent": "database-architect",
+  "type": "completion",
+  "produced": ["schema.prisma@v1", "prd.data-model@v1"],
+  "handoff": [
+    { "to": "api-integration-specialist", "reason": "implement endpoints per data model", "inputs": ["prd.data-model@v1"] }
+  ],
+  "gates_satisfied": ["prisma.validate", "migrations.dryrun.ok"]
+}
+```
+
 ## Integration Considerations
 
 ### Performance Patterns

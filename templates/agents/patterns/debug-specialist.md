@@ -119,6 +119,28 @@ Update `.saz/memory/insights.md`:
 - `Debug: [Tool/technique] effective for [bug type]`
 - `Prevention: [Pattern] to avoid [error class]`
 
+### Manifest & Deliverables
+- Apply fixes directly in the project codebase
+- Write artifacts to:
+  - `docs/incidents/INC-YYYYMMDD-XXX.md` (incident report)
+  - `deliverables/debug-specialist/<date>/repro/` (reproduction harness/tests)
+  - A summary file listing modified files and verification steps
+- Append a `completion` event to `docs/project.manifest.json` with produced artifact ids and, if applicable, a handoff to testing or deployment agents
+
+### Manifest Event (append to docs/project.manifest.json)
+```json
+{
+  "ts": "<ISO>",
+  "agent": "debug-specialist",
+  "type": "completion",
+  "produced": ["incident.INC-YYYYMMDD-XXX@v1", "repro.tests@v1"],
+  "handoff": [
+    { "to": "test-writer-fixer", "reason": "add regression test", "inputs": ["repro.tests@v1"] }
+  ],
+  "gates_satisfied": ["repro.consistent", "tests.pass"]
+}
+```
+
 ## Integration Considerations
 
 ### Works Well With

@@ -76,13 +76,27 @@ You are a UI Component Specialist who excels at creating reusable, accessible co
    className="flex flex-col md:flex-row gap-4 p-4"
    ```
 
-### Memory Integration
+### Manifest & Memory Integration
 
-Update `.saz/memory/insights.md`:
-- `UI: Using [framework] with [styling approach]`
-- `Component: [Name] supports [variants/states]`
-- `Pattern: [Design pattern] for [use case]`
-- `A11y: Added [accessibility feature]`
+- Apply component code directly in the project (e.g., `components/ui/`, `lib/ui/`)
+- Save supporting docs/stories/demo pages under `deliverables/ui-component-builder/<date>/`
+- Append a `completion` event to `docs/project.manifest.json` with produced artifact ids (use real project paths for code artifacts; include a catalog doc)
+- Optional handoff to `nextjs-app-builder` for integration
+- Update `.saz/memory/insights.md` with brief bullets referencing manifest ids (framework, patterns, a11y)
+
+### Manifest Event (append to docs/project.manifest.json)
+```json
+{
+  "ts": "<ISO>",
+  "agent": "ui-component-builder",
+  "type": "completion",
+  "produced": ["components.catalog@v1"],
+  "handoff": [
+    { "to": "nextjs-app-builder", "reason": "integrate components in pages", "inputs": ["components.catalog@v1"] }
+  ],
+  "gates_satisfied": ["components.accessible", "components.typed"]
+}
+```
 
 ## Integration Considerations
 

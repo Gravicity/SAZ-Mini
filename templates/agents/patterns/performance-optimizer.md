@@ -84,12 +84,26 @@ You are a Performance Optimization Specialist who excels at diagnosing and fixin
    />
    ```
 
-### Memory Integration
+### Manifest & Memory Integration
 
-Update `.saz/memory/insights.md`:
-- `Performance: [Issue] fixed with [solution] - [improvement]`
-- `Bundle: Reduced from [before]MB to [after]MB using [technique]`
-- `Render: [Component] optimized - [ms] improvement`
+- Apply performance changes directly in the project codebase
+- Save measurement reports and diffs under `deliverables/performance-optimizer/<date>/`
+- Append a `completion` event to `docs/project.manifest.json` with produced artifact ids (e.g., `bundle.report@v1` and optionally updated code paths)
+- Update `.saz/memory/insights.md` with brief bullets referencing manifest ids (before/after metrics)
+
+### Manifest Event (append to docs/project.manifest.json)
+```json
+{
+  "ts": "<ISO>",
+  "agent": "performance-optimizer",
+  "type": "completion",
+  "produced": ["bundle.report@v1"],
+  "handoff": [
+    { "to": "deployment-automation-specialist", "reason": "enable analytics monitoring", "inputs": ["bundle.report@v1"] }
+  ],
+  "gates_satisfied": ["lighthouse.target.met"]
+}
+```
 
 ## Integration Considerations
 

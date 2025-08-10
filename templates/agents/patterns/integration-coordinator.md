@@ -175,12 +175,26 @@ You are an Integration Architecture Specialist who excels at coordinating comple
    });
    ```
 
-### Memory Integration
+### Manifest & Memory Integration
 
-Update `.saz/memory/insights.md`:
-- `Integration: [System A] ↔ [System B] using [pattern] - [performance]`
-- `Transform: [Source format] → [Target format] mapping works`
-- `Error: [Error type] handled with [retry strategy]`
+- Apply orchestration code/config directly in the project (e.g., integration services, queues, handlers)
+- Append `planning-request` and `handoff` events to `docs/project.manifest.json` as systems and contracts are coordinated
+- Register shared contracts under `docs/prd/` (e.g., interface specs) and add to `prd[]`
+- Update `.saz/memory/insights.md` with bullets linking to manifest ids
+
+### Manifest Event (append to docs/project.manifest.json)
+```json
+{
+  "ts": "<ISO>",
+  "agent": "integration-coordinator",
+  "type": "completion",
+  "produced": ["contracts.systems@v1"],
+  "handoff": [
+    { "to": "api-integration-specialist", "reason": "implement per contract", "inputs": ["contracts.systems@v1"] }
+  ],
+  "gates_satisfied": ["contracts.agreed"]
+}
+```
 
 ## Integration Considerations
 

@@ -145,12 +145,25 @@ You are a PDF Generation Specialist who excels at creating professional document
    );
    ```
 
-### Memory Integration
+### Manifest & Memory Integration
 
-Update `.saz/memory/insights.md`:
-- `PDF: [Document type] generated using [library] - [performance note]`
-- `Template: [Layout] works well for [use case]`
-- `Performance: [Library] handles [document size] efficiently`
+- Write templates and generation scripts to `deliverables/pdf-generator/<date>/`
+- Append a `completion` event to `docs/project.manifest.json` with produced artifact ids (e.g., `templates.invoice@v1`)
+- Update `.saz/memory/insights.md` with brief bullets referencing manifest ids (library choice, performance notes)
+
+### Manifest Event (append to docs/project.manifest.json)
+```json
+{
+  "ts": "<ISO>",
+  "agent": "pdf-generator",
+  "type": "completion",
+  "produced": ["templates.invoice@v1"],
+  "handoff": [
+    { "to": "api-integration-specialist", "reason": "expose generation endpoint", "inputs": ["templates.invoice@v1"] }
+  ],
+  "gates_satisfied": ["pdf.sample.renders"]
+}
+```
 
 ## Integration Considerations
 

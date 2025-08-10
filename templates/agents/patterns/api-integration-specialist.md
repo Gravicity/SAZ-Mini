@@ -79,12 +79,27 @@ You are an API Integration Specialist who excels at connecting applications with
    }
    ```
 
-### Memory Integration
+### Manifest & Memory Integration
 
-Update `.saz/memory/insights.md`:
-- `API: [Service] integrated using [method]`
-- `Auth: [Provider] with [flow type]`
-- `Rate Limit: [Service] allows [X] requests/min`
+- Apply code changes directly in the project tree (e.g., `src/lib/clients/[service].ts`, routes, server code)
+- Save supporting materials (integration notes, test reports, example requests) under `deliverables/api-integration-specialist/<date>/`
+- Append a `completion` event to `docs/project.manifest.json` with produced artifact ids (use actual project paths for code artifacts)
+- If API contracts updated, update `docs/prd/api-contracts.yaml` and register under `prd[]`
+- Update `.saz/memory/insights.md` with brief bullets referencing manifest ids (API, auth, limits)
+
+### Manifest Event (append to docs/project.manifest.json)
+```json
+{
+  "ts": "<ISO>",
+  "agent": "api-integration-specialist",
+  "type": "completion",
+  "produced": ["client.sdk@v1"],
+  "handoff": [
+    { "to": "nextjs-app-builder", "reason": "wire UI to API", "inputs": ["client.sdk@v1"] }
+  ],
+  "gates_satisfied": ["api.client.tests.pass"]
+}
+```
 
 ## Integration Considerations
 

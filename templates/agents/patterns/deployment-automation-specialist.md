@@ -83,13 +83,26 @@ You are a Deployment Automation Specialist who excels at setting up reliable CI/
    vercel domains add yourdomain.com
    ```
 
-### Memory Integration
+### Manifest & Memory Integration
 
-Update `.saz/memory/insights.md`:
-- `Deploy: Using [platform] for [app type]`
-- `Pipeline: [Action] triggers [deployment]`
-- `Environment: [Variable] configured for [stage]`
-- `Domain: [URL] pointing to [service]`
+- Apply CI/CD files directly in the project (e.g., `.github/workflows/`, `vercel.json`, `Dockerfile`)
+- Save deployment notes under `deliverables/deployment-automation-specialist/<date>/`
+- Append a `completion` event to `docs/project.manifest.json` with produced artifact ids (use real project paths for CI files)
+- Update `.saz/memory/insights.md` with brief bullets referencing manifest ids (platform, pipeline triggers, env)
+
+### Manifest Event (append to docs/project.manifest.json)
+```json
+{
+  "ts": "<ISO>",
+  "agent": "deployment-automation-specialist",
+  "type": "completion",
+  "produced": ["deploy.workflow@v1"],
+  "handoff": [
+    { "to": "project-planner", "reason": "update roadmap with deployment gates", "inputs": ["deploy.workflow@v1"] }
+  ],
+  "gates_satisfied": ["deploy.pipeline.passes"]
+}
+```
 
 ## Integration Considerations
 

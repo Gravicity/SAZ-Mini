@@ -8,10 +8,12 @@ set -e
 # Parse arguments
 INTERACTIVE=false
 FORCE=false
+SEED_PRD=false
 for arg in "$@"; do
     case "$arg" in
         --interactive) INTERACTIVE=true ;;
         --force) FORCE=true ;;
+        --PRD) SEED_PRD=true ;;
         --help)
             echo "SAZ-Mini Project Setup"
             echo
@@ -20,12 +22,14 @@ for arg in "$@"; do
             echo "Options:"
             echo "  --interactive    Prompt for user choices"
             echo "  --force         Overwrite existing files without prompting" 
+            echo "  --PRD           Seed minimal PRD stubs (planner will still own PRD)"
             echo "  --help          Show this help message"
             echo
             echo "Examples:"
             echo "  $0                      # Silent setup with defaults"
             echo "  $0 --interactive        # Prompt for all choices"
             echo "  $0 --force             # Overwrite existing setup"
+            echo "  $0 --PRD               # Seed minimal PRD stubs in docs/prd/"
             exit 0
             ;;
     esac
@@ -171,7 +175,33 @@ echo -e "${YELLOW}→${NC} Setting up memory system in .saz/"
 mkdir -p .saz/memory
 cp "$SOURCE_DIR/templates/memory/project.md" .saz/memory/ 2>/dev/null || true
 cp "$SOURCE_DIR/templates/memory/insights.md" .saz/memory/ 2>/dev/null || true
-cp "$SOURCE_DIR/templates/memory/workflows.md" .saz/memory/ 2>/dev/null || true
+# Deprecated: workflows snapshot (optional)
+if [[ -f "$SOURCE_DIR/templates/memory/workflows.md" ]]; then
+    echo -e "${YELLOW}→${NC} Note: workflows.md is deprecated; keeping for backward compatibility"
+    cp "$SOURCE_DIR/templates/memory/workflows.md" .saz/memory/ 2>/dev/null || true
+fi
+
+# Create docs and manifest
+echo -e "${YELLOW}→${NC} Initializing single-manifest orchestration (docs/project.manifest.json)"
+mkdir -p docs/prd
+mkdir -p deliverables
+mkdir -p docs/state 2>/dev/null || true
+if [[ ! -f "docs/project.manifest.json" ]]; then
+    if [[ -f "$SOURCE_DIR/templates/manifests/project.manifest.json" ]]; then
+        cp "$SOURCE_DIR/templates/manifests/project.manifest.json" docs/project.manifest.json
+    else
+        echo '{"version":"1.0.0","prd":[],"lanes":[],"tasks":[],"artifacts":[],"events":[]}' > docs/project.manifest.json
+    fi
+    echo -e "${GREEN}✓${NC} Created docs/project.manifest.json"
+else
+    echo -e "${YELLOW}→${NC} docs/project.manifest.json already exists (preserved)"
+fi
+
+# Optional PRD seeding
+if [[ "$SEED_PRD" == true ]]; then
+    echo -e "${YELLOW}→${NC} Seeding minimal PRD stubs (optional)"
+    touch docs/prd/vision.md docs/prd/requirements.md docs/prd/architecture.md docs/prd/data-model.md docs/prd/api-contracts.yaml docs/prd/roadmap.md 2>/dev/null || true
+fi
 
 # Install starter agents
 echo -e "${YELLOW}→${NC} Installing starter agents in .claude/agents/"
@@ -221,6 +251,7 @@ echo -e "  • ${GREEN}SuperAgent-Zero Mini v2.0 identity${NC} in CLAUDE.md"
 echo -e "  • ${GREEN}6 starter agents${NC} in .claude/agents/starter/"
 echo -e "  • ${GREEN}10 production templates${NC} in .saz/templates/agents/patterns/"  
 echo -e "  • ${GREEN}Memory system${NC} in .saz/memory/"
+echo -e "  • ${GREEN}Single-manifest orchestration${NC} at docs/project.manifest.json (lanes/tasks/gates/events)"
 echo -e "  • ${GREEN}Agent registry${NC} tracking dependencies"
 
 echo -e "\n${BLUE}Starter Agents Installed:${NC}"
@@ -256,6 +287,11 @@ if [[ -f ".gitignore" ]]; then
         echo ".saz/.installed" >> .gitignore
         echo ".saz/notes.md" >> .gitignore
         echo ".saz/templates/" >> .gitignore
+        echo "deliverables/**" >> .gitignore
+        echo "docs/state/**" >> .gitignore
+        echo "docs/graphs/*.png" >> .gitignore
+        echo "docs/graphs/*.svg" >> .gitignore
+        echo "docs/graphs/*.json" >> .gitignore
         echo -e "${YELLOW}→${NC} Added SAZ-Mini patterns to .gitignore"
     fi
 fi
@@ -296,6 +332,23 @@ if [[ -f ".saz/packs/registry.json" ]]; then
 else
     echo -e "${RED}✗${NC} Registry missing"
     VALIDATION_PASSED=false
+fi
+
+# Validate manifest
+if python3 - <<'PY'
+import json,sys
+try:
+  json.load(open('docs/project.manifest.json'))
+  print('OK')
+except Exception as e:
+  print('ERR', e)
+  sys.exit(1)
+PY
+then
+  echo -e "${GREEN}✓${NC} Manifest present and valid JSON"
+else
+  echo -e "${RED}✗${NC} docs/project.manifest.json invalid"
+  VALIDATION_PASSED=false
 fi
 
 if [[ "$VALIDATION_PASSED" == true ]]; then

@@ -212,7 +212,7 @@ echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━�
 echo -e "\n${BLUE}What's installed:${NC}"
 echo -e "  • ${GREEN}6 starter agents${NC} (planner, analyzer, memory-manager, agent-generator, agent-preloader, brainstorming-specialist)"
 echo -e "  • ${GREEN}10 production templates${NC} (Next.js, API, Database, UI, Deployment + 5 new v2.0 templates)"
-echo -e "  • ${GREEN}Enhanced workflows${NC} with emergency response and educational modes"
+echo -e "  • ${GREEN}Single-manifest orchestration (SSOT)${NC} templates and setup support (manifest lanes/tasks/gates/events)"
 echo -e "  • ${GREEN}Health check tool${NC} for troubleshooting"
 
 echo -e "\n${BLUE}Next steps:${NC}"

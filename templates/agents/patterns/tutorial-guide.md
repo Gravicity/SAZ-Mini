@@ -184,12 +184,26 @@ You are an Expert Technical Educator who excels at breaking down complex program
    ```
    ```
 
-### Memory Integration
+### Manifest & Memory Integration
 
-Update `.saz/memory/insights.md`:
-- `Learning: [Concept] taught using [approach] - [student outcome]`
-- `Pattern: [Teaching method] works well for [skill level]`
-- `Challenge: [Common mistake] prevented with [explanation technique]`
+- Write tutorial materials to `deliverables/tutorial-guide/<date>/` (lesson README, exercises, example code)
+- Append a `completion` event to `docs/project.manifest.json` with produced artifact ids (e.g., `tutorial.react-hooks@v1`)
+- Optional handoff: to `nextjs-app-builder` or `project-planner` for project-based continuation
+- Update `.saz/memory/insights.md` with brief bullets referencing manifest ids (topic, level, outcomes)
+
+### Manifest Event (append to docs/project.manifest.json)
+```json
+{
+  "ts": "<ISO>",
+  "agent": "tutorial-guide",
+  "type": "completion",
+  "produced": ["tutorial.<topic>@v1"],
+  "handoff": [
+    { "to": "project-planner", "reason": "convert learning into a mini project plan", "inputs": ["tutorial.<topic>@v1"] }
+  ],
+  "gates_satisfied": ["tutorial.objectives.met"]
+}
+```
 
 ## Integration Considerations
 
